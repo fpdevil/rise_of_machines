@@ -30,7 +30,7 @@ A `Cost Function` provides an idea about how good is our model in making a predi
 > They are `Convex` and they have a `global minimum`. By convex, we mean that the error surfaces are shaped like a bowl. Having a global minimum means that on an error surface there is a unique set of optimal weights with the lowest sum of squared errors. The reason that the error surface always have such properties is that it's overall shape is determined by the linearity of the model rather than the properties of the data. If we can find the global minimum of the error surface, we can find the set of weights defining the model that best fits the training dataset. This approach of finding weights is known as `Least Squares Optimization`.
 
 
-The method of least squares is the most popular method used to calculate the coefficients of the regression line. The goal of the regression line is to find the line that best describes the linear pattern observed on the scatter plot. The least squares method is the method that minimizes the error terms which are the difference between the observed values of y ( $${y_i}$$ ) and the predicted values of y ($$\widehat{y_i}$$ ). Such a linear model can be depicted using the below figure:
+The method of least squares is the most popular method used to calculate the coefficients of the regression line. The goal of the regression line is to find the line that best describes the linear pattern observed on the scatter plot. The least squares method is the method that minimizes the error terms which are the difference between the observed values of y ( ${y_i}$ ) and the predicted values of y ($\widehat{y_i}$ ). Such a linear model can be depicted using the below figure:
 
 ![alt text](images/lse.png "Mean Squared Error method")
 
