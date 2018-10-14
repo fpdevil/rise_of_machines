@@ -99,5 +99,5 @@ Here is a figure depicting what is meant by Linearly seperable and non-seperable
 * [Machine Learning Lectures] - C19 Machine Learning lectures By Andrew Zisserman
 * [UCI Machine Learning Repository] - Vast data sets for playing with ML Algorithms
 
-[Macine Learning Lectures]: <http://www.robots.ox.ac.uk/~az/lectures/ml/index.html>
+[Machine Learning Lectures]: <http://www.robots.ox.ac.uk/~az/lectures/ml/index.html>
 [UCI Machine Learning Repository]: <http://archive.ics.uci.edu/ml/datasets.html>
