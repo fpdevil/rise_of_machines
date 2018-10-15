@@ -18,6 +18,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from rise_of_machines.helpers import create_meshgrid
 
 class Adaline():
     """ADaptive LInear NEuron Classifier.
@@ -120,12 +121,12 @@ class Adaline():
         return np.where(self.activation(self.net_input(X)) >= 0.0, 1, -1)
 
 
-def create_meshgrid(x, y, margin=1, step=0.02):
-    x_min, x_max = x.min() - margin, x.max() + margin
-    y_min, y_max = y.min() - margin, y.max() + margin
-    xx, yy = np.meshgrid(
-        np.arange(x_min, x_max, step), (np.arange(y_min, y_max, step)))
-    return xx, yy
+#  def create_meshgrid(x, y, margin=1, step=0.02):
+    #  x_min, x_max = x.min() - margin, x.max() + margin
+    #  y_min, y_max = y.min() - margin, y.max() + margin
+    #  xx, yy = np.meshgrid(
+        #  np.arange(x_min, x_max, step), (np.arange(y_min, y_max, step)))
+    #  return xx, yy
 
 
 def draw_decision_boundary(X, y, classifier, margin=1, step=0.02):

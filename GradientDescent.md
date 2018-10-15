@@ -2,7 +2,9 @@
 
 ## What is `Gradient Descent` ?
 
-`Gradient Descent` is a first-order iterative optimization algorithm for finding the minimum of a function. More specifically, it is an optimization algorithm used to minimize some cost or an error function by iteratively moving in the direction of steepest descent as defined by the negative of the gradient. In machine learning, we use gradient descent to update the parameters of our model during linear regression. The parameters here refer to coefficients in linear regression and/or weights in a `Neural Network`.
+`Gradient Descent` is a first-order iterative optimization algorithm for finding the minimum of a function. More specifically, it is an optimization algorithm for finding the minimum of a `cost` or an `error` function by repeatedly moving in the direction of the steepest descent as defined by the negative of the gradient. In machine learning, we use gradient descent to update the parameters of our model during linear/logistic regression(s). The parameters here refer to coefficients in linear regression and/or weights in a `Neural Network`.
+
+> A vast majority of the artificial neural networks (*ANN*) are based on the gradient descent algorithm. So, it's quite necessary to get a good understanding of the concept before scratching any of the actual neural networks.
 
 > `Gradient Descent` when applied to `Neural Networks` is called as `Back Propogation`
 
@@ -106,9 +108,13 @@ Here is a figure depicting what is meant by Linearly seperable and non-seperable
 ### References
 * [Machine Learning Lectures] - C19 Machine Learning lectures By Andrew Zisserman
 * [UCI Machine Learning Repository] - Vast data sets for playing with ML Algorithms
+* [Equation Editor] - Insert beautifully formatted math equations in markdown
+* [iTex2Img] - Latex Equation Editor
 
 [Machine Learning Lectures]: <http://www.robots.ox.ac.uk/~az/lectures/ml/index.html>
 [UCI Machine Learning Repository]: <http://archive.ics.uci.edu/ml/datasets.html>
+[Equation Editor]: <https://www.codecogs.com/latex/eqneditor.php>
+[iTex2Img]: <http://www.sciweavers.org/free-online-latex-equation-editor>
 
 
 [e1]: http://www.sciweavers.org/tex2img.php?eq=y_i&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0
