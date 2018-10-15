@@ -55,8 +55,11 @@ where
 Because we can expect the error surface to be convex and possess a global minimum, we can find the optimal weights at the point where the *partial derivative* of the error surface with respect to `m` and `c` are equal to `0`.
 
 > Given the cost function ![e7]
+
 > The gradient of the `Cost function` would be
+
 > ![e8]
+
 > ![e9]
 
 ## Applications of `Gradient Descent` for `Linear Regression`
@@ -106,7 +109,7 @@ Here is a figure depicting what is meant by Linearly seperable and non-seperable
 [e1]: http://www.sciweavers.org/tex2img.php?eq=y_i&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0
 [e2]: http://www.sciweavers.org/tex2img.php?eq=%5Cwidehat%7By_i%7D&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0
 [e3]: https://latex.codecogs.com/gif.latex?%5Cinline%20f%28m%2Cc%29%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28y_i%20-%20%28mx_i%20&plus;%20b%29%29%5E2
-[e4]: http://www.sciweavers.org/tex2img.php?eq=Error%28m%2C%20c%29%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28y_i%20-%20%28mx_i%20%2B%20b%29%29%5E2&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0
+[e4]: https://latex.codecogs.com/gif.latex?%5Cinline%20Error%28m%2C%20c%29%20%3D%20%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28y_i%20-%20%28mx_i%20&plus;%20b%29%29%5E2
 [e5]: https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D
 [e6]: https://latex.codecogs.com/gif.latex?%5Cinline%20mx_i%20&plus;%20c
 [e7]: https://latex.codecogs.com/gif.latex?%5Cinline%20f%28m%2Cc%29%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28y_i%20-%20%28mx_i%20&plus;%20b%29%29%5E2
