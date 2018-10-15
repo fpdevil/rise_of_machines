@@ -38,28 +38,33 @@ Consider the example of linear regression where our model is f(x) = mx + c, wher
 
 y = mx + c
 
-### Formula for the `Mean Squared Error`
+### Formula for the `Mean Squared Error**
 
-MSE = ![e3]
+**MSE** = ![e3]
 
-This would be the cost function or the error function and can usually be represented as ![e4]
+`This would be the usual cost function or the error function and can be represented as below`
+
+![e4]
 
 where
 
 - N = total number of observations (data points)
 
-- ![e5] is the mean
+- ![e5] __is the mean__
 
-- ![e1] is the actual value of an observation and ![e6] is our prediction
+- ![e1] **is the actual value of an observation** and
 
-Because we can expect the error surface to be convex and possess a global minimum, we can find the optimal weights at the point where the *partial derivative* of the error surface with respect to `m` and `c` are equal to `0`.
+- ![e6] **is our prediction**
+
+Because we can expect the error surface to be convex and possessing a global minimum, we can find the optimal weights at the point where the **partial derivative** of the error surface with respect to `m` and `c` are equal to `0`.
+
 
 > Given the cost function ![e7]
-
+>
 > The gradient of the `Cost function` would be
-
+>
 > ![e8]
-
+>
 > ![e9]
 
 ## Applications of `Gradient Descent` for `Linear Regression`
@@ -111,7 +116,7 @@ Here is a figure depicting what is meant by Linearly seperable and non-seperable
 [e3]: https://latex.codecogs.com/gif.latex?%5Cinline%20f%28m%2Cc%29%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28y_i%20-%20%28mx_i%20&plus;%20b%29%29%5E2
 [e4]: https://latex.codecogs.com/gif.latex?%5Cinline%20Error%28m%2C%20c%29%20%3D%20%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28y_i%20-%20%28mx_i%20&plus;%20b%29%29%5E2
 [e5]: https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D
-[e6]: https://latex.codecogs.com/gif.latex?%5Cinline%20mx_i%20&plus;%20c
+[e6]: https://latex.codecogs.com/gif.latex?%5Cinline%20%28mx_i%20&plus;%20c%29
 [e7]: https://latex.codecogs.com/gif.latex?%5Cinline%20f%28m%2Cc%29%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%28y_i%20-%20%28mx_i%20&plus;%20b%29%29%5E2
 [e8]: https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20m%7D%20%3D%20%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20-2x_i%28y_i%20-%20%28mx_i%20&plus;%20b%29%29
 [e9]: https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20m%7D%20%3D%20%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20-2%28y_i%20-%20%28mx_i%20&plus;%20b%29%29
