@@ -40,24 +40,24 @@ y = mx + c
 
 ### Formula for the `Mean Squared Error`
 
-MSE = $$\frac{1}{N}\sum_{i=1}^{N} (y_i - (mx_i + b))^2$$
+MSE = ![e3]
 
-This would be the cost function or the error function and can usually be represented as $$Error(m, c) = \frac{1}{N}\sum_{i=1}^{N} (y_i - (mx_i + b))^2$$
+This would be the cost function or the error function and can usually be represented as ![e4]
 
 where
 
 - N = total number of observations (data points)
 
-- $$\frac{1}{N}\sum_{i=1}^{N}$$ is the mean
+- ![e5] is the mean
 
-- $$y_i$$ is the actual value of an observation and (mx_i + c) is our prediction
+- ![e1] is the actual value of an observation and ![e6] is our prediction
 
-Because we can expect the error surface to be convex and possess a global minimum, we can find the optimal weights at the point where the *partial  derivative* of the error surface with respect to `m` and `c` are equal to `0`.
+Because we can expect the error surface to be convex and possess a global minimum, we can find the optimal weights at the point where the *partial derivative* of the error surface with respect to `m` and `c` are equal to `0`.
 
-> Given the cost function $$f(m, c) = \frac{1}{N}\sum_{i=1}^{N} (y_i - (mx_i + b))^2$$
+> Given the cost function ![e7]
 > The gradient of the `Cost function` would be
-> $$\frac{\partial f}{\partial m} =  \frac{1}{N}\sum_{i=1}^{N} -2x_i(y_i - (mx_i + b))$$
-> $$\frac{\partial f}{\partial m} =  \frac{1}{N}\sum_{i=1}^{N} -2(y_i - (mx_i + b))$$
+> ![e8]
+> ![e9]
 
 ## Applications of `Gradient Descent` for `Linear Regression`
 
@@ -105,3 +105,10 @@ Here is a figure depicting what is meant by Linearly seperable and non-seperable
 
 [e1]: http://www.sciweavers.org/tex2img.php?eq=y_i&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0
 [e2]: http://www.sciweavers.org/tex2img.php?eq=%5Cwidehat%7By_i%7D&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0
+[e3]: http://www.sciweavers.org/tex2img.php?eq=%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28y_i%20-%20%28mx_i%20%2B%20b%29%29%5E2&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0
+[e4]: http://www.sciweavers.org/tex2img.php?eq=Error%28m%2C%20c%29%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28y_i%20-%20%28mx_i%20%2B%20b%29%29%5E2&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0
+[e5]: http://www.sciweavers.org/tex2img.php?eq=%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0
+[e6]: http://www.sciweavers.org/tex2img.php?eq=%28mx_i%20%2B%20c%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0
+[e7]: http://www.sciweavers.org/tex2img.php?eq=f%28m%2C%20c%29%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20%28y_i%20-%20%28mx_i%20%2B%20b%29%29%5E2&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0
+[e8]: http://www.sciweavers.org/tex2img.php?eq=%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20m%7D%20%3D%20%20%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20-2x_i%28y_i%20-%20%28mx_i%20%2B%20b%29%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0
+[e9]: http://www.sciweavers.org/tex2img.php?eq=%5Cfrac%7B%5Cpartial%20f%7D%7B%5Cpartial%20m%7D%20%3D%20%20%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%20-2%28y_i%20-%20%28mx_i%20%2B%20b%29%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=0
