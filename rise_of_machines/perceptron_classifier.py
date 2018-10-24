@@ -1,15 +1,24 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Copyright © 2018 Sampath Singamsetty
-#
-# Author        : Sampath Singamsetty <Singamsetty.Sampath@gmail.com>
-# Created Time  : Tue Oct 09 01:14:27 IST 2018
-# File          : perceptron_classifier.py
-# License       :
-# Description   : Perceptron in a Single layer Neural Network
-#
-##############################################################################
+"""
+
+Perceptron Classifier
+-----------------
+
+An implementation of the Perceptron based mode using python
+in a Single Layer Neural Network. Iris data set with 2 variables
+is used as an example.
+
+Authors: Sampath Singamsetty
+
+:module: perceptron_classifier
+:created:
+:platform: OS X
+:copyright: Copyright © 2018 Sampath Singamsetty
+:license: MIT, see LICENSE for details.
+:moduleauthor: Sampath Singamsetty <Singamsetty.Sampath@gmail.com>
+"""
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
