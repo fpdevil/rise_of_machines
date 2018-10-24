@@ -1,24 +1,30 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright © 2018 Sampath Singamsetty
-#
-# Author        : Sampath Singamsetty <Singamsetty.Sampath@gmail.com>
-# Created Time  : Tue Oct 11 01:40:12 IST 2018
-# File          : adaline_classifier.py
-# License       : MIT
-# Description   : ADALINE Classifier
-#                 Adaprive Linear Neurons and the convergence of learning
 """
-.. :module:: adaline_classifier
-   :platform: OS X
-.. moduleauthor: Sampath Singamsetty <Singamsetty.Sampath@gmail.com>
-..
+
+ADALINE Classifier
+-----------------
+
+An implementation of the Adaptive Linear Neurons and the convergence of learning
+using python. In this kind of learning, the cost function is minimized by taking
+a step in  the opposite direction of  a cost gradient calculated  from the whole
+training set, which is why it's called as a Batch Gradient Descent.
+
+Authors: Sampath Singamsetty
+
+:module: adaline_classifier
+:created:
+:platform: OS X
+:copyright: Copyright © 2018 Sampath Singamsetty
+:license: MIT, see LICENSE for details.
+:moduleauthor: Sampath Singamsetty <Singamsetty.Sampath@gmail.com>
 """
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from rise_of_machines.helpers import create_meshgrid
+from helpers import create_meshgrid
+
 
 class Adaline():
     """ADaptive LInear NEuron Classifier.
@@ -121,12 +127,12 @@ class Adaline():
         return np.where(self.activation(self.net_input(X)) >= 0.0, 1, -1)
 
 
-#  def create_meshgrid(x, y, margin=1, step=0.02):
-    #  x_min, x_max = x.min() - margin, x.max() + margin
-    #  y_min, y_max = y.min() - margin, y.max() + margin
-    #  xx, yy = np.meshgrid(
-        #  np.arange(x_min, x_max, step), (np.arange(y_min, y_max, step)))
-    #  return xx, yy
+# def create_meshgrid(x, y, margin=1, step=0.02):
+#     x_min, x_max = x.min() - margin, x.max() + margin
+#     y_min, y_max = y.min() - margin, y.max() + margin
+#     xx, yy = np.meshgrid(
+#     np.arange(x_min, x_max, step), (np.arange(y_min, y_max, step)))
+#     return xx, yy
 
 
 def draw_decision_boundary(X, y, classifier, margin=1, step=0.02):
