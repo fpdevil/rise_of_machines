@@ -4,6 +4,7 @@
 # import the necessary packages
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
 
 
 def create_meshgrid(x, y, margin=1, step=0.02):
@@ -38,9 +39,9 @@ def draw_decision_boundary(x,
                            margin=1,
                            step=0.02,
                            alpha=0.8,
-                           cmap=plt.cm.coolwarn):
+                           cmap=plt.cm.coolwarm):
     """Draw decision boundary separating the collections
-    
+
     Parameters
     ----------
     x: {array-like}, shape = [n_samples, n_features]
@@ -53,7 +54,10 @@ def draw_decision_boundary(x,
     color alpha value
     cmap: color map
     """
-    # set-up grid for plotting.
+    # set-up the marker generator and color map for plotting
+    markers = ('s', 'o', 'x', '*', 'v')
+
+    # for data, first set-up a grid for plotting.
     X0, X1 = x[:, 0], x[:, 1]
     xx, yy = create_meshgrid(X0, X1, margin, step)
 
@@ -62,15 +66,16 @@ def draw_decision_boundary(x,
     Z = classifier.predict(mesh.T)
     Z = Z.reshape(xx.shape)
 
-    plt.contourf(xx, yy, Z, alpha=0.8, cmap=plt.cm.coolwarm)
+    plt.contourf(xx, yy, Z, alpha=0.8, cmap=cmap)
     plt.xlim(xx.min(), xx.max())
     plt.ylim(yy.min(), yy.max())
 
-    for cl in np.unique(y):
+    for idx, cl in enumerate(np.unique(y)):
         print("cl: ", cl)
         plt.scatter(
             x=x[y == cl, 0],
             y=x[y == cl, 1],
             alpha=0.8,
+            marker=markers[idx],
             label=cl,
-            edgecolor='black')
+            edgecolor='yellow')
