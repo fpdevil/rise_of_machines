@@ -3,20 +3,18 @@ Machine Learning with Python
 
 Machine Learning algorithms and underlying mathematical concepts with sample projects in Python.
 
-Some excerpts from `machine learning book <https://machinelearningbook.com/>`_
+- Some excerpts from `machine learning book <https://machinelearningbook.com/>`_
 
 
 Miscellaneous
 -----------
 
-Some packaging help from `repository <http://alexanderwaldin.github.io/packaging-python-project.html>`_
+- Some packaging help from `repository <http://alexanderwaldin.github.io/packaging-python-project.html>`_
 
 References
 --------
 
-::
-
-   Insert math latex equations using `codecogs <https://www.codecogs.com/latex/eqneditor.php>`_
+- Insert math latex equations using `codecogs <https://www.codecogs.com/latex/eqneditor.php>`_
 
 
 Licence
