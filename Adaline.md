@@ -49,6 +49,7 @@ With this, the update to the weight ![e6] may be written as:
 
 ![e8]
 
+In `Adaline`, the update to weight is calculated based on all the samples in the training set instead of updating the weights incrementally as in a `Perceptron`. This is the reason why this approach is also called as `Batch Gradient Descent`
 
 [e1]: https://latex.codecogs.com/gif.latex?J%28w%29%3D%5Cfrac%7B1%7D%7B2%7D%5Csum_%7Bi%7D%28y%5E%7B%28i%29%7D-%5Cphi%28z%5E%7B%28i%29%7D%29%29%5E2
 [e2]: https://latex.codecogs.com/gif.latex?%5Cnabla%7BJ%28w%29%7D
