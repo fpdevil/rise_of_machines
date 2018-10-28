@@ -42,12 +42,14 @@ class Perceptron():
     Attributes
     ----------
     w_: 1 dimensional array
-    Weights after fitting.
+    Weights after fitting or after training the data.
     errors_: list
     number of mis-classifications during each epoch
     """
 
     def __init__(self, eta=0.01, epoch=10):
+        """Constructor loaded with default learning rate of 0.01
+        and number of epochs set to 10"""
         super(Perceptron, self).__init__()
         self.eta = eta
         self.epoch = epoch
@@ -64,14 +66,15 @@ class Perceptron():
                                   n_features is the number of features.
         y : array-like, shape = [n_samples]
           Target values, which are the desired output from algorithm
+
         Returns
         -------
         self : object
         """
         # initialize an array with weights equal to zero. The array length
         # is  equal to  the number  of features plus one.  This additional
-        # value is the threshold. w_0 * x_0 = 1
-        # the 1 can also be considered as bias
+        # value is the threshold defined as w_0 * x_0 = 1
+        # this unit value 1 can also be considered as bias
         self.w_ = np.zeros(1 + X.shape[1])
 
         # collect the number of mis-classifications during each epoch
@@ -90,7 +93,7 @@ class Perceptron():
                 # Δwj = η(target(i) − output(i))x(i)j
                 # Δwj = η(target(i) − output(i))xj(i)
                 update = self.eta * (target - self.predict(x_i))
-                # update the weight wj:=wj+Δwj
+                # update the feature weight wj:=wj+Δwj
                 self.w_[1:] += update * x_i
                 # update the bias
                 self.w_[0] += update
