@@ -145,7 +145,7 @@ class AdalineSGD():
 
     @classmethod
     def activation(cls, X):
-        """Calculation of the Continuos Linear Activation
+        """Calculation of the Continuous Linear Activation
         :returns: X
         """
         return X
