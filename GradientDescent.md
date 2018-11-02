@@ -94,7 +94,7 @@ In order to find the best fitting line for our data, we need to find the best se
 
 ## Learning Rate (η)
 
-The Learning Rate variable $$\eta$$ controls how large of a step we take downhill during each iteration. If we take too large of a step, we may step over the minimum. However, if we take small steps, it will require many iterations to arrive at the minimum.
+The Learning Rate variable η controls how large of a step we take downhill during each iteration. If we take too large of a step, we may step over the minimum. However, if we take small steps, it will require many iterations to arrive at the minimum.
 
 ## Convergence for Perceptron
 
