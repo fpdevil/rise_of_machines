@@ -92,7 +92,7 @@ Below is a pictorial representation of such a simple linear regression.
 
 In order to find the best fitting line for our data, we need to find the best set of slope `m` and y-intercept `c` values. This often involves a set of trial and errors as well as iterations using multiple updated values of both `m` and `c` until we land on an equation with values which will not change any further. Because, there is a trial and error as well iterations involved, there is always a certain percentage of error which would control the degree of correctness of the values `m` and `c`. How good the values can be estimated and predicated depends on the error value which is quite volatile and it's clear that the lower such error value the more correct the values and the equation. This is where `Gradient Descent` plays an important rule of correcting/reducing the error to a near zero value.
 
-## Learning Rate ($$\eta$$)
+## Learning Rate (η)
 
 The Learning Rate variable $$\eta$$ controls how large of a step we take downhill during each iteration. If we take too large of a step, we may step over the minimum. However, if we take small steps, it will require many iterations to arrive at the minimum.
 
