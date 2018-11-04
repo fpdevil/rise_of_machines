@@ -4,7 +4,6 @@
 # import the necessary packages
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
 
 
 def create_meshgrid(x, y, margin=1, step=0.02):
@@ -28,6 +27,8 @@ def create_meshgrid(x, y, margin=1, step=0.02):
     """
     x_min, x_max = x.min() - margin, x.max() + margin
     y_min, y_max = y.min() - margin, y.max() + margin
+    # define the mesh grid, with xx and yy holding the grid of
+    # points where the function will be evaluated
     xx, yy = np.meshgrid(
         np.arange(x_min, x_max, step), np.arange(y_min, y_max, step))
     return xx, yy
@@ -47,7 +48,7 @@ def draw_decision_boundary(x,
     x: {array-like}, shape = [n_samples, n_features]
     y: array-like, shape = [n_samples]
     margin: margin for the min and max
-    step: float
+    step_size: float This would be the buffer for clarity
     This is spacing between values. For any output out, this is the distance
     between two adjacent values, out[i+1] - out[i]
     alpha: float
@@ -63,10 +64,11 @@ def draw_decision_boundary(x,
 
     mesh = np.array([xx.ravel(), yy.ravel()])
     print("np.array: {}", format(mesh))
+    # compute the classifiers output
     Z = classifier.predict(mesh.T)
     Z = Z.reshape(xx.shape)
-
-    plt.contourf(xx, yy, Z, alpha=0.8, cmap=cmap)
+    # now plot the contour
+    plt.contourf(xx, yy, Z, alpha=alpha, cmap=cmap)
     plt.xlim(xx.min(), xx.max())
     plt.ylim(yy.min(), yy.max())
 
@@ -75,7 +77,80 @@ def draw_decision_boundary(x,
         plt.scatter(
             x=x[y == cl, 0],
             y=x[y == cl, 1],
-            alpha=0.8,
+            alpha=alpha,
             marker=markers[idx],
             label=cl,
             edgecolor='yellow')
+
+
+def plot_classifier(X,
+                    y,
+                    classifier,
+                    margin=1.0,
+                    step_size=0.01,
+                    alpha=0.8,
+                    test_idx=None,
+                    cmap=plt.cm.Paired):
+    """Draw the datapoints and boundaries
+    Parameters
+    ----------
+    x: {array-like}, shape = [n_samples, n_features]
+    y: array-like, shape = [n_samples]
+    margin: margin for the min and max
+    step: float
+    This is spacing between values. For any output out, this is the distance
+    between two adjacent values, out[i+1] - out[i]
+    alpha: float
+    blending value to decide transparency - 0 (transparent) and 1 (opaque)
+    test_idx:
+    cmap: object
+    color map for the output colors of objects
+    """
+    # set-up the marker generator for plotting
+    markers = ('s', 'o', 'x', '*', 'v')
+
+    # setup and define a range for plotting the data
+    X0, X1 = X[:, 0], X[:, 1]
+    xx, yy = create_meshgrid(X0, X1, margin=margin, step=step_size)
+
+    # compute the output of the classifier
+    mesh = np.c_[xx.ravel(), yy.ravel()]
+    mesh_output = classifier.predict(mesh)
+
+    # reshape the array
+    mesh_output = mesh_output.reshape(xx.shape)
+
+    # draw and fill contour lines
+    plt.contourf(xx, yy, mesh_output, alpha=0.4, cmap=cmap)
+
+    # now overlay the training coordinates over the plot
+    # set boundaries
+    plt.xlim(xx.min(), xx.max())
+    plt.ylim(yy.min(), yy.max())
+    plt.xticks((np.arange(int(min(X[:, 0]) - 1), int(max(X[:, 0]) + 1), 1.0)))
+    plt.yticks((np.arange(int(min(X[:, 1]) - 1), int(max(X[:, 1]) + 1), 1.0)))
+
+    # use a separate marker for each training label
+    for (i, cl) in enumerate(np.unique(y)):
+        plt.scatter(
+            x=X[y == cl, 0],
+            y=X[y == cl, 1],
+            alpha=alpha,
+            marker=markers[i],
+            label=cl,
+            edgecolors='purple')
+
+    # plotting and highlighting the test samples
+    if test_idx:
+        # x_test, y_test = X[test_idx, :], y[test_idx]
+        x_test = X[test_idx, :]
+        plt.scatter(
+            x_test[:, 0],
+            x_test[:, 1],
+            c='',
+            edgecolors='purple',
+            alpha=alpha,
+            linewidths=1,
+            marker='o',
+            s=100,
+            label='Test Data')
