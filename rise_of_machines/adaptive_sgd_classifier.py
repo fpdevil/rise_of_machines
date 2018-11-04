@@ -221,7 +221,7 @@ clf = sgd.train(X_std, y)
 
 # decision boundary printing
 title = ('Decision surface at ADALINE - Stochastic Gradient Descent')
-draw_decision_boundary(X_std, y, classifier=clf)
+draw_decision_boundary(X_std, y, classifier=clf, cmap=plt.cm.Pastel1)
 plt.title(title)
 plt.xlabel('sepal length [standardized]')
 plt.ylabel('petal length [standardized]')
