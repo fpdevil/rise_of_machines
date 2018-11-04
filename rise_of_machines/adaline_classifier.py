@@ -146,6 +146,7 @@ def draw_decision_boundary(X, y, classifier, margin=1, step=0.02):
     Z = Z.reshape(xx.shape)
 
     plt.contourf(xx, yy, Z, alpha=0.8, cmap=plt.cm.coolwarm)
+    # plt.contourf(xx, yy, Z, alpha=0.8, cmap=plt.cm.Spectral)
     plt.xlim(xx.min(), xx.max())
     plt.ylim(yy.min(), yy.max())
 
