@@ -103,6 +103,9 @@ The mathematical equation of `Logistic` or `Sigmoid` function is as shown below
 
 ![e1]
 
+where `z` is the weighted sum defined as under
+![e6]
+
 In `python` such an equation may be coded and visualized as below.
 
 ```python
@@ -127,11 +130,13 @@ plt.ylabel('y')
 plt.xticks()
 plt.yticks()
 plt.text(-7.5, 0.85, r'$g(z) = \frac{1}{1 + e^{-z}}$')
+plt.text(-7.5, 0.70, r'$z \rightarrow  \infty  ; g(z) \rightarrow 1$')
+plt.text(-7.5, 0.65, r'$z \rightarrow  -\infty  ; g(z) \rightarrow 0$')
 plt.grid(True)
 plt.show()
 ```
 
-The above code provides the below output
+The above code provides the below plot
 
 ![alt_text](images/sigmoid.png "sigmoid function")
 
@@ -157,11 +162,43 @@ Representation of the `Sigmoid` function using `Hypothesis` function:
 Substitute the value of `z` with ![e4] in the preceding equation,
 then the equation ![e1]
 
-is converted to ![e5]
+is converted to the following
+![e5]
+
+Differentiating the `hypothesis` and the `sigmoid`
+
+![e7]
+
+![e8]
+
+which can be re-rewritten as
+
+![e9]
+
+This simplifies to
+
+![e10]
+
+### ### Parameter estimation
+
+The goal of the Logistic Regression is to find or estimate the unknown
+parameters θ (w₀, w₁, w₂ ... wₙ) which is done using the __`Maximum Likehood
+Estimation`__ which entails finding the set of parameters for which the _Probability_
+of the observed data is greatest. The `Maximum Likelihood equation` is derived
+from the probability distribution of the dependent variable.
+
+
+
+
 
 [e1]: https://latex.codecogs.com/gif.latex?g%28z%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
 [e2]: https://latex.codecogs.com/gif.latex?g%28z%29%20%29%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%20%5Cif%20z%20%5Cgeq%200%20%26%20%5C%5C%200%20%5Cif%20z%20%3C%200%20%26%20%5Cend%7Bmatrix%7D%5Cright.
 [e3]:
 https://latex.codecogs.com/gif.latex?h_%7B%5Ctheta%7D%28x%29%20%3D%20g%28%5Ctheta%5ET%7Bx%7D%29
 [e4]: https://latex.codecogs.com/gif.latex?%5Ctheta%5ET%7Bx%7D
-[e5]: https://latex.codecogs.com/gif.latex?h_%7B%5Ctheta%7D%28x%29%20%3D%20g%28%5Ctheta%5ET%7Bx%7D%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-%5Ctheta%7BT%7D%7Dx%7D
+[e5]: https://latex.codecogs.com/gif.latex?h_%5Ctheta%7B%28x%29%7D%20%3D%20g%28%5Ctheta%5E%7BT%7D%7Bx%7D%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-%5Ctheta%5E%7BT%7D%7Bx%7D%7D%7D
+[e6]: https://latex.codecogs.com/gif.latex?z%20%3D%20%5Ctheta%5ET%7Bx%7D%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dw_0x_0%20&plus;%20w_1x_1%20&plus;%20w_2x_2%20&plus;%20...%20&plus;%20w_nx_n
+[e7]: https://latex.codecogs.com/gif.latex?%7Bg%7D%27%28z%29%20%3D%20%5Cfrac%7B%5Cpartial%20%7D%7B%5Cpartial%20z%7D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
+[e8]: https://latex.codecogs.com/gif.latex?%7Bg%7D%27%28z%29%20%3D%20%5Cfrac%7B1%7D%7B%281%20&plus;%20e%5E%7B-z%7D%29%5E2%7D%20%7Be%5E%7B-z%7D%7D
+[e9]: https://latex.codecogs.com/gif.latex?%7Bg%7D%27%28z%29%20%3D%20%5Cfrac%7B1%7D%7B%281%20&plus;%20e%5E%7B-z%7D%29%7D%5Cleft%20%28%201%20-%20%5Cfrac%7B1%7D%7B%281%20&plus;%20e%5E%7B-z%7D%29%7D%20%5Cright%20%29
+[e10]: https://latex.codecogs.com/gif.latex?%7Bg%7D%27%28z%29%20%3D%20g%28z%29%5Cleft%20%28%201%20-%20g%28z%29%20%5Cright%20%29
