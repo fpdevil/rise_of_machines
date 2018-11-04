@@ -165,6 +165,9 @@ then the equation ![e1]
 is converted to the following
 ![e5]
 
+
+### A pretty useful property of the derivative of Sigmoid function.
+
 Differentiating the `hypothesis` and the `sigmoid`
 
 ![e7]
@@ -179,17 +182,50 @@ This simplifies to
 
 ![e10]
 
-### ### Parameter estimation
+### Parameter estimation
 
 The goal of the Logistic Regression is to find or estimate the unknown
-parameters θ (w₀, w₁, w₂ ... wₙ) which is done using the __`Maximum Likehood
+parameters `θ (w₀, w₁, w₂ ... wₙ)` which is done using the __`Maximum Likehood
 Estimation`__ which entails finding the set of parameters for which the _Probability_
 of the observed data is greatest. The `Maximum Likelihood equation` is derived
 from the probability distribution of the dependent variable.
 
+So, in essence, we need to find the coefficient `θ` for the best fit model
+which best explains the training data set, by using the `Maximum Likelihood
+Estimator` under a set of assumptions. Let's endow our classification model
+with a set of probabilistic assumptions and then fit the parameters via
+maximum likelihood.
 
+Let us assume the below
 
+![e11]
+![e12]
 
+At this point we can discuss about the __Bernoulli Distribution__ regarding
+the probability assumptions. `Bernoulli Distribution` is the probability
+distribution of a random variable taking on only two values, `1`  (`success`)
+and `0` (`false`) with complementary probabilities `p` and `q` respectively.
+
+Where `p` and `q` are related to each other as `p + q = 1` or `q = 1 - p`.
+
+Mathematically,  `Bernoulli Distribution` is the probability distribution of
+random variable *X* having rhe `probability density function` defined as below:
+
+- __X__ takes two values `0` and `1`, with probabilities `p` and `1 - p`. That is
+![e13]
+for `0 < p < 1`
+
+- Frequency function which is the closed form pf probability density function is written as
+![e14]
+
+With this, we can express the assumptions made earlier in more compact form as
+under:
+
+![e15]
+
+Then the likelihood of the parameter `θ` may be written as:
+
+`L(θ) = P(y|X; θ)`
 
 [e1]: https://latex.codecogs.com/gif.latex?g%28z%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
 [e2]: https://latex.codecogs.com/gif.latex?g%28z%29%20%29%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%20%5Cif%20z%20%5Cgeq%200%20%26%20%5C%5C%200%20%5Cif%20z%20%3C%200%20%26%20%5Cend%7Bmatrix%7D%5Cright.
@@ -202,3 +238,8 @@ https://latex.codecogs.com/gif.latex?h_%7B%5Ctheta%7D%28x%29%20%3D%20g%28%5Cthet
 [e8]: https://latex.codecogs.com/gif.latex?%7Bg%7D%27%28z%29%20%3D%20%5Cfrac%7B1%7D%7B%281%20&plus;%20e%5E%7B-z%7D%29%5E2%7D%20%7Be%5E%7B-z%7D%7D
 [e9]: https://latex.codecogs.com/gif.latex?%7Bg%7D%27%28z%29%20%3D%20%5Cfrac%7B1%7D%7B%281%20&plus;%20e%5E%7B-z%7D%29%7D%5Cleft%20%28%201%20-%20%5Cfrac%7B1%7D%7B%281%20&plus;%20e%5E%7B-z%7D%29%7D%20%5Cright%20%29
 [e10]: https://latex.codecogs.com/gif.latex?%7Bg%7D%27%28z%29%20%3D%20g%28z%29%5Cleft%20%28%201%20-%20g%28z%29%20%5Cright%20%29
+[e11]: https://latex.codecogs.com/gif.latex?P%28y%20%3D%201%20%7C%20x%3B%20%5Ctheta%29%20%3D%20h_%7B%5Ctheta%7D%28x%29
+[e12]: https://latex.codecogs.com/gif.latex?P%28y%20%3D%200%20%7C%20x%3B%20%5Ctheta%29%20%3D%201%20-%20h_%7B%5Ctheta%7D%28x%29
+[e13]: https://latex.codecogs.com/gif.latex?Pr%28X%20%3D%20x%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20p%20%26%20x%20%3D%201%20%5C%5C%201%20-%20p%20%26%20x%20%3D%200%20%5Cend%7Bmatrix%7D%5Cright.
+[e14]: https://latex.codecogs.com/gif.latex?p%5Exq%5E%7B1%20-%20x%7D%20%3D%20p%5Ex%281%20-%20p%29%5E%7B1%20-%20x%7D
+[e15]: https://latex.codecogs.com/gif.latex?P%28y%20%7C%20x%3B%20%7B%5Ctheta%7D%29%20%3D%20%28h_%7B%5Ctheta%7D%28x%29%29%5Ey%281%20-%20%28h_%7B%5Ctheta%7D%28x%29%29%29%5E%7B1%20-%20y%7D
