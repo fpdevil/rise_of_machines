@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 """
 
 Perceptron Classifier
@@ -241,6 +240,6 @@ plot_decision_regions(X, y, classifier=per)
 plt.title('Decision Boundary')
 plt.xlabel('sepal length [cm]')
 plt.ylabel('petal length [cm]')
-plt.legend(loc='upper left')
+plt.legend(loc='upper left', fancybox=True, shadow=True)
 
 plt.show()
