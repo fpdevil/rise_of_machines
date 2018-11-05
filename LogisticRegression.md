@@ -91,7 +91,7 @@ There are two models within logistic regression as listed below:
 `Binary Logistic Regression` would be typically useful when the dependent variable is dichotomous (can fall into 2 categories like Head & Tail; Pass or Fail; 0 or 1 etc.) and the independent variables are either Continuous or Categorical.
 When the dependent variable is not dichotomous and is comprised of more than 2 categories, a `Multinomial Logistic Regression` may be used.
 
-Despite the name being `Logistic Regression`, it's used in the classification category to predict the discrete output. It's mostly used as a binary class classifier and the binary logistic model is used to estimate the probability of a binary response and it generates the response based on one or more predictors or independent vaiables or features. 
+Despite the name being `Logistic Regression`, it's used in the classification category to predict the discrete output. It's mostly used as a binary class classifier and the binary logistic model is used to estimate the probability of a binary response and it generates the response based on one or more predictors or independent vaiables or features.
 
 Logistic Regression assumes that the dependent (response variable) follows a Binomial distribution which can have the following characteristics
 
@@ -131,7 +131,7 @@ Assuming `𝑃(𝑌 = 1 | 𝑋)` as just `𝑝(𝑋)`
 
 ![alt_text](images/link_codecogs.gif "link function")
 
-From the above equation, it can be inferred that the right side is a linear combination of independent variables. The left side is known as the __log - odds__ or __odds ratio__ or __logit__ function and is the `link` function for Logistic Regression. 
+From the above equation, it can be inferred that the right side is a linear combination of independent variables. The left side is known as the __log - odds__ or __odds ratio__ or __logit__ function and is the `link` function for Logistic Regression.
 
 So, Logistic Regression applieas maximum likelihood estimation after transforming the dependent variable into a `logit` variable (a natural log of odds of the dependent variable occurring or not) with respect to independent variables. In the following equation, `log` of odds changes linearly as a function of explanatory variables.
 
@@ -219,7 +219,7 @@ Differentiating the `hypothesis` and the `sigmoid`, we can observe the below and
 
 ### Parameter estimation
 
-The goal of the Logistic Regression is to find or estimate the unknown parameters `θ (w₀, w₁, w₂ ... wₙ)` which is done using the __`Maximum Likehood Estimation`__ which entails finding the set of parameters for which the _Probability_ of the observed data is greatest. The `Maximum Likelihood` works in such way that it tries to find the value of the coefficients (𝑤₀, 𝑤₁) such that the predicted probabilities are as close to the observed probabilities as possible. 
+The goal of the Logistic Regression is to find or estimate the unknown parameters `θ (w₀, w₁, w₂ ... wₙ)` which is done using the __`Maximum Likehood Estimation`__ which entails finding the set of parameters for which the _Probability_ of the observed data is greatest. The `Maximum Likelihood` works in such way that it tries to find the value of the coefficients (𝑤₀, 𝑤₁) such that the predicted probabilities are as close to the observed probabilities as possible.
 
 In other words, for a binary classification [0, 1], the maximum likelihood will try to find the values 𝑤₀ and 𝑤₁ such that the resultant probabilities are closest to either `0` or `1`.
 
@@ -261,6 +261,103 @@ The likelihood function for the coefficients 𝑤₀ and 𝑤₁ may be written 
 
 In mathematics, the `Negative Log Likelihood` function is also called as `Error Function`.
 
+## Evaluation metrics in Logistic Regression
+
+In linear regression, the adjusted statistical terms or metrics are checked in order to evaluate the performance or model fit and accuracy. Following are the evaluation metrics used for Logistic Regression.
+
+1. Akaike Information Critera (__AIC__)
+
+Akaike information criterion (AIC) (Akaike, 1974) is a fined technique based on in-sample fit to estimate the likelihood of a model to predict/estimate the future values. It measures the relative quality of a statistical model for a given set of data.
+
+Akaike’s information criterion (AIC) compares the quality of a set of statistical models to each other. For instance, you might be interested in finding which variables contribute to low economical status and how the variables contribute to that status. Let’s say you create several regression models for various factors like education, finance, family size, or disability status. The `AIC` will take each model and rank them from best to worst. The *best* model will be the one that neither _under-fits_ nor _over-fits_.
+
+Although the `AIC` will choose the best model from a set, it won’t say anything about the absolute quality. In other words, if all of your models are poor, it will choose the best from the available bunch which might all be bad. Therefore, once you have selected the best model, consider running a hypothesis test for figuring out the relationship between the variable's in your model and the outcome of interest.
+
+A lower value of the `AIC` indicates a better fit.
+
+The following equation is used to estimate `AIC`
+
+`AIC = -2*ln(L) + 2*k`
+
+where
+    _L = Maximum value of Likelihood which is a measure of model fit (higher
+    the better fit)_ and
+    _k = Number of variables in the model_
+
+For smaller sample sizes `(n/K <= 40)`, use the second order `AIC` as follows
+
+`AIC = -2*ln(L) + 2*k + (2*k(k+1)/(n-k-1))`
+
+where
+    _n = Sample size_,
+    _L = Maximum likelihood_ andy
+    _k = number of model parameters or variables_
+
+
+2. Deviance
+
+Deviance gives pointers for determining whether the individual points are well fit by the model.
+
+In standard linear models, we estimate the parameters by minimizing the *Sum of Squared Residuals*, which is quivalent to finding parametes that *Maximize the Lkelihood*.
+
+In a `GLM`, we also fir parameters by maximizing the likelihood. The __deviance__ is a negative two times the maximum log likelihood up to an additive constant.
+
+The importance of Deviance may be understood using it's types, Null and Residual deviance.
+
+- Null Deviance: This is calculated from the model with no features, i.e.,
+  only intercept. It predicts the class via a constant probability. It is
+  analogous to the Total Sum of Squares (TSSS) in Linear Regression.
+
+- Residual Deviance: This is calculated from the model having all the
+  features. It is analogous to the Residual Sum of Squares (RSS) in Linear
+  Regression.
+
+> The larger the difference between `Null` and `Residual` deviance the better
+> the mode.
+
+In practice, `AIC` is given higher priority than `Deviance` to evaluate a model fit.
+
+
+3. Confusion Matrix: This is the most critical metric commonly used in
+   evaluating classification models. Apt to it's name, Confusion matrix is
+   quite confusing.
+
+Here is a simple visualization to understand the `Confusion Matrix`
+
+![alt_text](images/confusion_matrix.png 'Confusion Matrix')
+
+As can be seen from the figure, the confusion matrix avoids __confusion__ by measuring the actual and predicted values in a tabular format. In the table above, `Positive class = True or 1 and Negative class = False or 0`. 
+
+Following are the metrics we can derive from a confusion matrix:
+
+- Accuracy: Overal predicted accuracy of the model
+
+  Accuracy = {TP + TN} / {TP + FP + TN + FN}
+
+- Precision: Indicates how many values out of all the predicted positive values are actually positive.
+
+  Precision = {TP} / {TP + FP}
+
+- F score: It is the harmonic mean of `precision` and `recall.` It lies between `0` and `1`. Higher the value, better the model. It is formulated as ```2*((precision * recall) / (precision+recall))```.
+
+
+Here is a list of all the metrics:
+
+![alt_text](images/confusionmatrics_codecogs.gif 'Metrics from the Confusion Matrix')
+
+4. Receiver Operating Characteristic (ROC) Curve
+
+`ROC` is a graphical plot between True Positive Rate (TPR) against False Positive Rate (FPR) at various threshold values. ROC illustrates the performance of a binary classifier. `ROC` summarizes the model's performance by evaluating the trade-offs between True Positive Rate (sensitivity) and False Positive Rate (1 - specificity).
+
+The threshold in the regression is a real value between `0` and `1`, useful in converting the predicted probability of output into class label.
+
+If the threshold value is kept very low, most of the predicted observations will fall under the positive category, even when some of them should be placed under the negative category. On the other hand, keeping the threshold value at very high level penalizes the positive category, but the negative category will improve. So, ideally threshold should be set in such a way that trade-offs the value between both categories and produces overall higher accuracy.
+
+The Area Under Curve `AUC`, referred to as index of accuracy (`A`) or concordance index, is a critical performance metric for the `ROC` curve. Higher the area under the `ROC`, better the prediction power of the model. The ROC of a perfect model has `TP` equal to `1` and `FP` equal to `0`. The curve touches the top left corner of the graph.
+
+An `ROC` curve will roughly look as below
+
+![alt_text](images/roc.png 'ROC Plot')
 
 [p1]: https://latex.codecogs.com/gif.latex?P%28Y%20%3D%201%7CX%29%20%3D%20%5Cfrac%7Be%5E%7Bw_0%20&plus;%20w_1x%7D%7D%7B1%20&plus;%20e%5E%7Bw_0%20&plus;%20w_1x%7D%7D
 
