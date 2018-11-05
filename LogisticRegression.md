@@ -195,19 +195,21 @@ is converted to the following
 
 ### A pretty useful property of the derivative of Sigmoid function.
 
-Differentiating the `hypothesis` and the `sigmoid`
+Differentiating the `hypothesis` and the `sigmoid`, we can observe the below and arrive at a very useful property
 
-![e7]
+![alt_text](images/sigmoid_simplify_codecogs.gif 'differentiating the sigmoid')
 
-![e8]
-
-which can be re-rewritten as
-
-![e9]
-
-This simplifies to
-
-![e10]
+<!-- ![e7] -->
+<!--  -->
+<!-- ![e8] -->
+<!--  -->
+<!-- which can be re-rewritten as -->
+<!--  -->
+<!-- ![e9] -->
+<!--  -->
+<!-- This simplifies to -->
+<!--  -->
+<!-- ![e10] -->
 
 ### Parameter estimation
 
