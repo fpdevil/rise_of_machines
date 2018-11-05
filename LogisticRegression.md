@@ -265,7 +265,7 @@ In mathematics, the `Negative Log Likelihood` function is also called as `Error 
 
 In linear regression, the adjusted statistical terms or metrics are checked in order to evaluate the performance or model fit and accuracy. Following are the evaluation metrics used for Logistic Regression.
 
-1. Akaike Information Critera (__AIC__)
+__1. Akaike Information Critera (`AIC`)__
 
 Akaike information criterion (AIC) (Akaike, 1974) is a fined technique based on in-sample fit to estimate the likelihood of a model to predict/estimate the future values. It measures the relative quality of a statistical model for a given set of data.
 
@@ -294,7 +294,7 @@ where
     _k = number of model parameters or variables_
 
 
-2. Deviance
+__2. Deviance__
 
 Deviance gives pointers for determining whether the individual points are well fit by the model.
 
@@ -318,7 +318,7 @@ The importance of Deviance may be understood using it's types, Null and Residual
 In practice, `AIC` is given higher priority than `Deviance` to evaluate a model fit.
 
 
-3. Confusion Matrix: This is the most critical metric commonly used in
+__3. Confusion Matrix__: This is the most critical metric commonly used in
    evaluating classification models. Apt to it's name, Confusion matrix is
    quite confusing.
 
@@ -345,7 +345,7 @@ Here is a list of all the metrics:
 
 ![alt_text](images/confusionmatrics_codecogs.gif 'Metrics from the Confusion Matrix')
 
-4. Receiver Operating Characteristic (ROC) Curve
+__4. Receiver Operating Characteristic (`ROC`) Curve__
 
 `ROC` is a graphical plot between True Positive Rate (TPR) against False Positive Rate (FPR) at various threshold values. ROC illustrates the performance of a binary classifier. `ROC` summarizes the model's performance by evaluating the trade-offs between True Positive Rate (sensitivity) and False Positive Rate (1 - specificity).
 
