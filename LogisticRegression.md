@@ -2,6 +2,8 @@
 
 Logistic Regression (sometimes called as Logistic model or Logit model) is a multivariable method for analyzing the relationship between multiple independent variables and a categorical dependent variable. Here multivariate or multivariable analysis refers to the prediction of a single outcome using multiple variables.
 
+Logistic Regression belongs to the family of Generalized Linear Models (`glm`), and it's a binary classification algorithm used when the response variable is dichotomous (either 0 or 1).
+
 ## Types of Data
 
 Traditionally data can be either of the below
@@ -26,11 +28,11 @@ Here are examples covering some differences
 
 ### Discrete vs. Continuous
 
-> `Quantitative data` can further be classified as `Descrete or Continuous` which are as described below:
->
-> Discrete Data which can only take certain values (like whole numbers)
-> Continuous Data which can take any value (within a range)
->
+`Quantitative data` can further be classified as `Descrete or Continuous` which are as described below:
+
+- Discrete Data which can only take certain values (like whole numbers)
+- Continuous Data which can take any value (within a range)
+
 > In short, If a variable can take on any value between its minimum value and its maximum value, it is called a continuous variable; otherwise, it is called a discrete variable.
 
 
@@ -86,25 +88,50 @@ There are two models within logistic regression as listed below:
   1. Binary Logistic Regression &
   2. Multinomial Logistic Regression
 
-`Binary Logistic Regression` would be typically useful when the dependent variable is dichotomous (can fall into 2 categories like Head & Tail; Pass or Fail etc.) and the independent variables are either Continuous or Categorical.
+`Binary Logistic Regression` would be typically useful when the dependent variable is dichotomous (can fall into 2 categories like Head & Tail; Pass or Fail; 0 or 1 etc.) and the independent variables are either Continuous or Categorical.
 When the dependent variable is not dichotomous and is comprised of more than 2 categories, a `Multinomial Logistic Regression` may be used.
 
-Despite the name being `Logistic Regression`, it's used in the classification category to predict the discrete output. It's mostly used as a binary class classifier and the binary logistic model is used to estimate the probability of a binary response and it generates the response based on one or more predictors or independent vaiables or features. The algorithm employs a `Logistic function` or `Sigmoid function`.
+Despite the name being `Logistic Regression`, it's used in the classification category to predict the discrete output. It's mostly used as a binary class classifier and the binary logistic model is used to estimate the probability of a binary response and it generates the response based on one or more predictors or independent vaiables or features. 
 
-The `Sigmoid function` is used as a hypothesis function which the machine will use to classify the data and predict labels or the target variables. Here the target variables can be either `0` or `1`.
+Logistic Regression assumes that the dependent (response variable) follows a Binomial distribution which can have the following characteristics
+
+1. The number of trials are fixed, say `n` i.e., the number of rows in the data set must be a fixed number.
+
+2. Every trial can only have two outcomes, which means that the response variable (`y`) can only have two unique categories.
+
+3. The outcome from each trial must be independent of each other. In other words, the response variable's levels must be independent of each other.
+
+4. The probability of success `p` and the failure `q` (1 - p) must be the same for any trial.
+
+## Sigmoid function
+
+The Logistic Regression algorithm employs a `Logistic function` or `Sigmoid function`. The `Sigmoid function` is used as a hypothesis function which the machine will use to classify the data and predict labels or the target variables. Here the target variables can be either `0` or `1` as the model is probabilistic and probabilities always lie between `0` and `1`.
 
 So, mathematically if `y` is the output label then y ∈ [0, 1]
 
 The hypothesis function can convert the output value to either zero or one and the `sigmoid` exactly does that.
-
-## Sigmoid function
 
 The mathematical equation of `Logistic` or `Sigmoid` function is as shown below
 
 ![e1]
 
 where `z` is the weighted sum defined as under
+
 ![e6]
+
+Keeping `𝑧` as 𝑧 = 𝑤₀ + 𝑤₁𝑥
+
+![p1]
+
+Here `𝑃(𝑌 = 1 | 𝑋)` is read as the probability of `Y = 1` given some value of `X` and `𝑌 ∈ [0, 1]`
+
+In order to find the link function, we can use algebraic calculus and proceed as below.
+
+Assuming `𝑃(𝑌 = 1 | 𝑋)` as just `𝑝(𝑋)`
+
+![alt_text](images/link_codecogs.gif "link function")
+
+From the above equation, it can be inferred that the right side is a linear combination of independent variables. The left side is known as the __log - odds__ or __odds ratio__ or __logit__ function and is the `link` function for Logistic Regression. This `link` function follows a sigmoid as shown next which limits the range of probabilities between `0` and `1`.
 
 In `python` such an equation may be coded and visualized as below.
 
@@ -209,13 +236,13 @@ and `0` (`false`) with complementary probabilities `p` and `q` respectively.
 Where `p` and `q` are related to each other as `p + q = 1` or `q = 1 - p`.
 
 Mathematically,  `Bernoulli Distribution` is the probability distribution of
-random variable *X* having rhe `probability density function` defined as below:
+random variable *X* having rhe `probability mass function` defined as below:
 
 - __X__ takes two values `0` and `1`, with probabilities `p` and `1 - p`. That is
 ![e13]
 for `0 < p < 1`
 
-- Frequency function which is the closed form pf probability density function is written as
+- Frequency function which is the closed form pf probability mass function is written as
 ![e14]
 
 With this, we can express the assumptions made earlier in more compact form as
@@ -226,6 +253,9 @@ under:
 Then the likelihood of the parameter `θ` may be written as:
 
 `L(θ) = P(y|X; θ)`
+
+
+[p1]: https://latex.codecogs.com/gif.latex?P%28Y%20%3D%201%7CX%29%20%3D%20%5Cfrac%7Be%5E%7Bw_0%20&plus;%20w_1x%7D%7D%7B1%20&plus;%20e%5E%7Bw_0%20&plus;%20w_1x%7D%7D
 
 [e1]: https://latex.codecogs.com/gif.latex?g%28z%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
 [e2]: https://latex.codecogs.com/gif.latex?g%28z%29%20%29%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%20%5Cif%20z%20%5Cgeq%200%20%26%20%5C%5C%200%20%5Cif%20z%20%3C%200%20%26%20%5Cend%7Bmatrix%7D%5Cright.
