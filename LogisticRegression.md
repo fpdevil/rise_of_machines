@@ -121,13 +121,10 @@ The mathematical equation of `Logistic` or `Sigmoid` function is as shown below
 
 where `z` is the weighted sum defined as under
 
-![e6]
-
-Keeping `𝑧` as 𝑧 = 𝑤₀ + 𝑤₁𝑥
-
-![p1]
+![alt_text](images/weights_codecogs.gif 'weighted sum')
 
 Here `𝑃(𝑌 = 1 | 𝑋)` is read as the probability of `Y = 1` given some value of `X` and `𝑌 ∈ [0, 1]`
+It may also be written as `g(z) = 𝑃(𝑌 = 1 | 𝑋; 𝑤)` in which case it's defined as the probability of a particular sample belonging to class 1, given it's features x parameterized by the weights `w`.
 
 In order to find the link function, we can use algebraic calculus and proceed as below.
 
