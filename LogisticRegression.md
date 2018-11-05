@@ -2,7 +2,7 @@
 
 Logistic Regression (sometimes called as Logistic model or Logit model) is a multivariable method for analyzing the relationship between multiple independent variables and a categorical dependent variable. Here multivariate or multivariable analysis refers to the prediction of a single outcome using multiple variables.
 
-Logistic Regression belongs to the family of Generalized Linear Models (`glm`), and it's a binary classification algorithm used when the response variable is dichotomous (either 0 or 1).
+Logistic Regression belongs to the family of Generalized Linear Models (`glm`), and it's a binary classification algorithm used when the response variable is dichotomous (either 0 or 1). It is the most scalable learning algorithms.
 
 ## Types of Data
 
@@ -64,10 +64,14 @@ The output variables may also be known as `response` or `dependent` variables.
 
 With the above example of Car, we can write an equation representing some kind of relation between the car mileage (Y) and the input parameters as below.
 
-Y = 𝑤₀𝑋₀ + 𝑤₁𝑋₁ + 𝑤₂𝑋₂ + 𝑤₃𝑋₃
-  = bias + 𝑤₁𝑋₁ + 𝑤₂𝑋₂ + 𝑤₃𝑋₃
+`Y = 𝑤₀𝑋₀ + 𝑤₁𝑋₁ + 𝑤₂𝑋₂ + 𝑤₃𝑋₃`
 
-or Y = f(X) + ϵ       (where ϵ is the error term)
+`𝑤₀` refers to the bias unit, and is an additional input value that we provide
+    for `𝑋₀ = 1`
+
+With that, the equation becomes `Y = bias + 𝑤₁𝑋₁ + 𝑤₂𝑋₂ + 𝑤₃𝑋₃`
+
+or `Y = f(X) + ϵ`       (where `ϵ` is the error term)
 
 where `bias` is the error term
        the coefficients 𝑤₁, 𝑤₂ and 𝑤₃ are the coefficients of independent variables,
@@ -192,6 +196,10 @@ logistic function gives an output value of one
 
 - If the value of `z` is less than zero, then the logistic function
 generates the output zero.
+
+So, we may conclude that the `Sigmoid` takes real number values as input and
+transforms them into values in the range `[0, 1]` with an intercept at `g(z) =
+0.5`
 
 Such inferences can be represented mathematically as follows:
 
@@ -326,7 +334,7 @@ Here is a simple visualization to understand the `Confusion Matrix`
 
 ![alt_text](images/confusion_matrix.png 'Confusion Matrix')
 
-As can be seen from the figure, the confusion matrix avoids __confusion__ by measuring the actual and predicted values in a tabular format. In the table above, `Positive class = True or 1 and Negative class = False or 0`. 
+As can be seen from the figure, the confusion matrix avoids __confusion__ by measuring the actual and predicted values in a tabular format. In the table above, `Positive class = True or 1 and Negative class = False or 0`.
 
 Following are the metrics we can derive from a confusion matrix:
 
