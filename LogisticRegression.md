@@ -199,46 +199,26 @@ Differentiating the `hypothesis` and the `sigmoid`, we can observe the below and
 
 ![alt_text](images/sigmoid_simplify_codecogs.gif 'differentiating the sigmoid')
 
-<!-- ![e7] -->
-<!--  -->
-<!-- ![e8] -->
-<!--  -->
-<!-- which can be re-rewritten as -->
-<!--  -->
-<!-- ![e9] -->
-<!--  -->
-<!-- This simplifies to -->
-<!--  -->
-<!-- ![e10] -->
-
 ### Parameter estimation
 
-The goal of the Logistic Regression is to find or estimate the unknown
-parameters `θ (w₀, w₁, w₂ ... wₙ)` which is done using the __`Maximum Likehood
-Estimation`__ which entails finding the set of parameters for which the _Probability_
-of the observed data is greatest. The `Maximum Likelihood equation` is derived
-from the probability distribution of the dependent variable.
+The goal of the Logistic Regression is to find or estimate the unknown parameters `θ (w₀, w₁, w₂ ... wₙ)` which is done using the __`Maximum Likehood Estimation`__ which entails finding the set of parameters for which the _Probability_ of the observed data is greatest. The `Maximum Likelihood` works in such way that it tries to find the value of the coefficients (𝑤₀, 𝑤₁) such that the predicted probabilities are as close to the observed probabilities as possible. 
 
-So, in essence, we need to find the coefficient `θ` for the best fit model
-which best explains the training data set, by using the `Maximum Likelihood
-Estimator` under a set of assumptions. Let's endow our classification model
-with a set of probabilistic assumptions and then fit the parameters via
-maximum likelihood.
+In other words, for a binary classification [0, 1], the maximum likelihood will try to find the values 𝑤₀ and 𝑤₁ such that the resultant probabilities are closest to either `0` or `1`.
+
+So, in essence, we need to find the coefficient `θ` for the best fit model which best explains the training data set, by using the `Maximum Likelihood Estimator` under a set of assumptions. Let's endow our classification model with a set of probabilistic assumptions and then fit the parameters via maximum likelihood.
 
 Let us assume the below
 
 ![e11]
 ![e12]
 
-At this point we can discuss about the __Bernoulli Distribution__ regarding
-the probability assumptions. `Bernoulli Distribution` is the probability
-distribution of a random variable taking on only two values, `1`  (`success`)
-and `0` (`false`) with complementary probabilities `p` and `q` respectively.
+The `Maximum Likelihood equation` is derived from the probability distribution of the dependent variable.
+
+At this point we can discuss about the __Bernoulli Distribution__ regarding the probability assumptions. `Bernoulli Distribution` is the probability distribution of a random variable taking on only two values, `1`  (`success`) and `0` (`false`) with complementary probabilities `p` and `q` respectively.
 
 Where `p` and `q` are related to each other as `p + q = 1` or `q = 1 - p`.
 
-Mathematically,  `Bernoulli Distribution` is the probability distribution of
-random variable *X* having rhe `probability mass function` defined as below:
+Mathematically,  `Bernoulli Distribution` is the probability distribution of random variable *X* having rhe `probability mass function` defined as below:
 
 - __X__ takes two values `0` and `1`, with probabilities `p` and `1 - p`. That is
 ![e13]
@@ -256,6 +236,13 @@ Then the likelihood of the parameter `θ` may be written as:
 
 `L(θ) = P(y|X; θ)`
 
+The likelihood function for the coefficients 𝑤₀ and 𝑤₁ may be written as below:
+
+![alt_text](images/likelihood_codecogs.gif 'maximum likelihood')
+
+
+In mathematics, the `Negative Log Likelihood` function is also called as `Error Function`.
+
 
 [p1]: https://latex.codecogs.com/gif.latex?P%28Y%20%3D%201%7CX%29%20%3D%20%5Cfrac%7Be%5E%7Bw_0%20&plus;%20w_1x%7D%7D%7B1%20&plus;%20e%5E%7Bw_0%20&plus;%20w_1x%7D%7D
 
@@ -266,10 +253,6 @@ https://latex.codecogs.com/gif.latex?h_%7B%5Ctheta%7D%28x%29%20%3D%20g%28%5Cthet
 [e4]: https://latex.codecogs.com/gif.latex?%5Ctheta%5ET%7Bx%7D
 [e5]: https://latex.codecogs.com/gif.latex?h_%5Ctheta%7B%28x%29%7D%20%3D%20g%28%5Ctheta%5E%7BT%7D%7Bx%7D%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-%5Ctheta%5E%7BT%7D%7Bx%7D%7D%7D
 [e6]: https://latex.codecogs.com/gif.latex?z%20%3D%20%5Ctheta%5ET%7Bx%7D%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dw_0x_0%20&plus;%20w_1x_1%20&plus;%20w_2x_2%20&plus;%20...%20&plus;%20w_nx_n
-[e7]: https://latex.codecogs.com/gif.latex?%7Bg%7D%27%28z%29%20%3D%20%5Cfrac%7B%5Cpartial%20%7D%7B%5Cpartial%20z%7D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
-[e8]: https://latex.codecogs.com/gif.latex?%7Bg%7D%27%28z%29%20%3D%20%5Cfrac%7B1%7D%7B%281%20&plus;%20e%5E%7B-z%7D%29%5E2%7D%20%7Be%5E%7B-z%7D%7D
-[e9]: https://latex.codecogs.com/gif.latex?%7Bg%7D%27%28z%29%20%3D%20%5Cfrac%7B1%7D%7B%281%20&plus;%20e%5E%7B-z%7D%29%7D%5Cleft%20%28%201%20-%20%5Cfrac%7B1%7D%7B%281%20&plus;%20e%5E%7B-z%7D%29%7D%20%5Cright%20%29
-[e10]: https://latex.codecogs.com/gif.latex?%7Bg%7D%27%28z%29%20%3D%20g%28z%29%5Cleft%20%28%201%20-%20g%28z%29%20%5Cright%20%29
 [e11]: https://latex.codecogs.com/gif.latex?P%28y%20%3D%201%20%7C%20x%3B%20%5Ctheta%29%20%3D%20h_%7B%5Ctheta%7D%28x%29
 [e12]: https://latex.codecogs.com/gif.latex?P%28y%20%3D%200%20%7C%20x%3B%20%5Ctheta%29%20%3D%201%20-%20h_%7B%5Ctheta%7D%28x%29
 [e13]: https://latex.codecogs.com/gif.latex?Pr%28X%20%3D%20x%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20p%20%26%20x%20%3D%201%20%5C%5C%201%20-%20p%20%26%20x%20%3D%200%20%5Cend%7Bmatrix%7D%5Cright.
