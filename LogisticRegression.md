@@ -131,7 +131,25 @@ Assuming `𝑃(𝑌 = 1 | 𝑋)` as just `𝑝(𝑋)`
 
 ![alt_text](images/link_codecogs.gif "link function")
 
-From the above equation, it can be inferred that the right side is a linear combination of independent variables. The left side is known as the __log - odds__ or __odds ratio__ or __logit__ function and is the `link` function for Logistic Regression. This `link` function follows a sigmoid as shown next which limits the range of probabilities between `0` and `1`.
+From the above equation, it can be inferred that the right side is a linear combination of independent variables. The left side is known as the __log - odds__ or __odds ratio__ or __logit__ function and is the `link` function for Logistic Regression. 
+
+So, Logistic Regression applieas maximum likelihood estimation after transforming the dependent variable into a `logit` variable (a natural log of odds of the dependent variable occurring or not) with respect to independent variables. In the following equation, `log` of odds changes linearly as a function of explanatory variables.
+
+![alt_text](images/logodds_codecogs.gif 'log odds')
+
+We may argue, why odds, `log(odds)` and not `probability`? The reason is as follows:
+
+```python
+ProbabilityRange = [0, 1]
+
+OddsRange = [0, +∞] as Odds = Probability / (1 - Probability)
+
+logRange(odds) = [-∞, +∞]
+```
+
+By converting the probability to `log(odds)`, the range of probability is expanded from `[0, 1]` to `[-∞, +∞]`.
+
+This `link` function follows a sigmoid as shown next which limits the range of probabilities between `0` and `1`.
 
 In `python` such an equation may be coded and visualized as below.
 
