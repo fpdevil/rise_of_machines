@@ -229,13 +229,15 @@ Substitute the value of `z` with ![e4] in the preceding equation, then the equat
 ![e5]
 
 
-### A pretty useful property of the derivative of Sigmoid function.
+### A useful property of the derivative of Sigmoid function.
 
 Differentiating the `hypothesis` and the `sigmoid`, we can observe the below and arrive at a very useful property
 
 ![alt_text](images/sigmoid_simplify_codecogs.gif 'differentiating the sigmoid')
 
-### Parameter estimation
+This is an interesting and a useful property of derivative of sigmoid function.
+
+### Parameter estimation (Given a Logistic Regression model, how do we fit weight 𝑤 for it?)
 
 The goal of the Logistic Regression is to find or estimate the unknown parameters `θ (w₀, w₁, w₂ ... wₙ)` which is done using the __`Maximum Likehood Estimation`__ which entails finding the set of parameters for which the _Probability_ of the observed data is greatest. The `Maximum Likelihood` works in such way that it tries to find the value of the coefficients (𝑤₀, 𝑤₁) such that the predicted probabilities are as close to the observed probabilities as possible.
 
@@ -243,9 +245,12 @@ In other words, for a binary classification [0, 1], the maximum likelihood will 
 
 So, in essence, we need to find the coefficient `θ` for the best fit model which best explains the training data set, by using the `Maximum Likelihood Estimator` under a set of assumptions. Let's endow our classification model with a set of probabilistic assumptions and then fit the parameters via maximum likelihood.
 
-Let us assume the below
+Below are the probabilistic assumptions we considered:
 
+- Probability of a particular sample belonging to class `1`, given it's features `x`  parameterized by the weights `w`.
 ![e11]
+
+- Probability of a particular sample belonging to class `0`, given it's features `x`  parameterized by the weights `w`.
 ![e12]
 
 The `Maximum Likelihood equation` is derived from the probability distribution of the dependent variable.
@@ -257,14 +262,19 @@ Where `p` and `q` are related to each other as `p + q = 1` or `q = 1 - p`.
 Mathematically,  `Bernoulli Distribution` is the probability distribution of random variable *X* having rhe `probability mass function` defined as below:
 
 - __X__ takes two values `0` and `1`, with probabilities `p` and `1 - p`. That is
+
 ![e13]
-for `0 < p < 1`
+
+Also, from the sigmoid function plot we can interpret that it's similar to the following:
+
+![p2]
+
+where `ŷ` is the predicted probability converted to a bimary outcome via a threshold function.
 
 - Frequency function which is the closed form pf probability mass function is written as
 ![e14]
 
-With this, we can express the assumptions made earlier in more compact form as
-under:
+With these, we can express the assumptions made earlier in more compact form as under:
 
 ![e15]
 
@@ -378,6 +388,7 @@ An `ROC` curve will roughly look as below
 ![alt_text](images/roc.png 'ROC Plot')
 
 [p1]: https://latex.codecogs.com/gif.latex?P%28Y%20%3D%201%7CX%29%20%3D%20%5Cfrac%7Be%5E%7Bw_0%20&plus;%20w_1x%7D%7D%7B1%20&plus;%20e%5E%7Bw_0%20&plus;%20w_1x%7D%7D
+[p2]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20%5Chat%7By%7D%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%20%26%20z%5Cgeq%200.0%5C%5C%200%20%26%20otherwise%20%5Cend%7Bmatrix%7D%5Cright
 
 [e1]: https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cbg_white%20%5Cfn_jvn%20g%28z%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
 [e2]: https://latex.codecogs.com/gif.latex?g%28z%29%20%29%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%20%5Cif%20z%20%5Cgeq%200%20%26%20%5C%5C%200%20%5Cif%20z%20%3C%200%20%26%20%5Cend%7Bmatrix%7D%5Cright.
@@ -385,8 +396,8 @@ An `ROC` curve will roughly look as below
 [e4]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20w%5ETx
 [e5]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20h_w%28x%29%20%3D%20g%28w%5ETx%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-%7Bw%5ETx%7D%7D%7D
 [e6]: https://latex.codecogs.com/gif.latex?z%20%3D%20%5Ctheta%5ET%7Bx%7D%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dw_0x_0%20&plus;%20w_1x_1%20&plus;%20w_2x_2%20&plus;%20...%20&plus;%20w_nx_n
-[e11]: https://latex.codecogs.com/gif.latex?P%28y%20%3D%201%20%7C%20x%3B%20%5Ctheta%29%20%3D%20h_%7B%5Ctheta%7D%28x%29
-[e12]: https://latex.codecogs.com/gif.latex?P%28y%20%3D%200%20%7C%20x%3B%20%5Ctheta%29%20%3D%201%20-%20h_%7B%5Ctheta%7D%28x%29
-[e13]: https://latex.codecogs.com/gif.latex?Pr%28X%20%3D%20x%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20p%20%26%20x%20%3D%201%20%5C%5C%201%20-%20p%20%26%20x%20%3D%200%20%5Cend%7Bmatrix%7D%5Cright.
+[e11]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20P%28y%20%3D%201%7Cx%3B%20w%29%20%3D%20h_w%28x%29
+[e12]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20P%28y%20%3D%200%7Cx%3B%20w%29%20%3D%201%20-%20h_w%28x%29
+[e13]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20Pr%28X%20%3D%20x%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20p%20%26%20x%20%3D%201%5C%5C%201%20-%20p%20%26%20x%20%3D%200%20%5Cend%7Bmatrix%7D%5Cright%5C%5C%5C%5C%20%5Cbegin%7Bmatrix%7D%20for%20%26%20all%20%26%200%20%3C%20p%20%3C%201%20%5Cend%7Bmatrix%7D
 [e14]: https://latex.codecogs.com/gif.latex?p%5Exq%5E%7B1%20-%20x%7D%20%3D%20p%5Ex%281%20-%20p%29%5E%7B1%20-%20x%7D
 [e15]: https://latex.codecogs.com/gif.latex?P%28y%20%7C%20x%3B%20%7B%5Ctheta%7D%29%20%3D%20%28h_%7B%5Ctheta%7D%28x%29%29%5Ey%281%20-%20%28h_%7B%5Ctheta%7D%28x%29%29%29%5E%7B1%20-%20y%7D
