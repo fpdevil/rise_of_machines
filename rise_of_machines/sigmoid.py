@@ -35,24 +35,24 @@ s = sigmoid(x)
 plt.plot(x, s)
 plt.grid()
 
-plt.rc('axes', labelsize=13)
-plt.rc('font', size=15)
+plt.rc('axes', labelsize=14)
+plt.rc('font', size=14)
 
 plt.title('Logistic Sigmoid')
 plt.xlabel('z')
 plt.ylabel('g(z)')
 
 # set some math info on the graph
-plt.text(-8.0, 0.85, r'$g(z) = \frac{1}{1 + e^{-z}}$')
-plt.text(-8.0, 0.70, r'$z \rightarrow \infty  ; g(z) \rightarrow 1$')
-plt.text(-8.0, 0.60, r'$z \rightarrow -\infty  ; g(z) \rightarrow 0$')
+plt.text(-9.0, 0.85, r'$g(z) = \frac{1}{1 + e^{-z}}$')
+plt.text(-9.0, 0.70, r'$z \rightarrow +\infty \Leftrightarrow g(z) \rightarrow 1$')
+plt.text(-9.0, 0.60, r'$z \rightarrow -\infty \Leftrightarrow g(z) \rightarrow 0$')
 
 # draw dotted lines crossing at (0, 0.5)
 plt.axvline(linewidth=2, color='g', linestyle='dashed')
 plt.axhline(y=0.5, color='r', linestyle='dashed')
 
 plt.xticks()
-plt.yticks(np.arange(0.0, 1.0, 0.1))
+plt.yticks(np.arange(0.0, 1.1, 0.1))
 plt.grid(True)
 
 # plt.savefig('../images/sigmoid.png')
