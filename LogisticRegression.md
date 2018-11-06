@@ -132,13 +132,21 @@ Assuming `𝑃(𝑌 = 1 | 𝑋)` as just `𝑝(𝑋)`
 
 ![alt_text](images/link_codecogs.gif "link function")
 
-From the above equation, it can be inferred that the right side is a linear combination of independent variables. The left side is known as the __log - odds__ or __odds ratio__ or __logit__ function and is the `link` function for Logistic Regression.
+Here, `𝑃(𝑌 = 1 | 𝑋)` is the conditional probability that a particular sample belongs to class 1 given it's features `𝑋`.
 
-So, Logistic Regression applieas maximum likelihood estimation after transforming the dependent variable into a `logit` variable (a natural log of odds of the dependent variable occurring or not) with respect to independent variables. In the following equation, `log` of odds changes linearly as a function of explanatory variables.
+From the above equation of `logit`, it can be inferred that the right side is a linear combination of independent variables. The left side is known as the __log - odds__ or __odds ratio__ or __logit__ function and is the `link` function for Logistic Regression.
+
+So, Logistic Regression applies maximum likelihood estimation after transforming the dependent variable into a `logit` variable (a natural log of odds of the dependent variable occurring or not) with respect to independent variables. In the following equation, `log` of odds changes linearly as a function of explanatory variables.
 
 ![alt_text](images/logodds_codecogs.gif 'log odds')
 
-We may argue, why odds, `log(odds)` and not `probability`? The reason is as follows:
+This may further be taken forward to achieve at the sigmoid as below.
+
+![alt_text](images/logit_sigmoid_codecogs.gif 'sigmoid derivation')
+
+We are interested in predicting the probability that a certain sample belongs to a particular class, which is the inverse form of the `logit` function. It is also called the `Logistic Sigmoid function`, which is abbreviated sometimes as simply `sigmoid` due to it's characteristic __S-Shape_. A plot of the sample `sigmoid` is included during the next section.
+
+*We may argue, why odds, `log(odds)` and not `probability`? The reason is as follows:*
 
 ```python
 ProbabilityRange = [0, 1]
