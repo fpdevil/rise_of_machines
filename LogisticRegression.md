@@ -163,9 +163,10 @@ This `link` function follows a sigmoid as shown next which limits the range of p
 In `python` such an equation may be coded and visualized as below.
 
 ```python
+import math
+
 import numpy as np
 import matplotlib.pyplot as plt
-import math
 
 
 def sigmoid(z):
@@ -175,18 +176,24 @@ def sigmoid(z):
     return a
 
 
-x = np.arange(-10., 10., 0.2)
+x = np.arange(-10., 10., 0.1)
 s = sigmoid(x)
 plt.plot(x, s)
-plt.title('Sigmoid function')
-plt.xlabel('x')
-plt.ylabel('y')
+plt.xlim()
+plt.ylim(-0.1, 1.1)
+plt.xlabel('z')
+plt.ylabel('g(z)')
+
 plt.xticks()
-plt.yticks()
+plt.yticks([0.0, 0.5, 1.0])
+ax = plt.gca()
+ax.yaxis.grid(True)
+
+plt.title('Sigmoid function')
 plt.text(-7.5, 0.85, r'$g(z) = \frac{1}{1 + e^{-z}}$')
 plt.text(-7.5, 0.70, r'$z \rightarrow  \infty  ; g(z) \rightarrow 1$')
 plt.text(-7.5, 0.65, r'$z \rightarrow  -\infty  ; g(z) \rightarrow 0$')
-plt.grid(True)
+
 plt.show()
 ```
 
