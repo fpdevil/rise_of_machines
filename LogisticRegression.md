@@ -292,6 +292,12 @@ The likelihood function for the coefficients 𝑤₀ and 𝑤₁ may be written 
 
 In mathematics, the `Negative Log Likelihood` function is also called as `Error Function`.
 
+- __Single Sample Training Instance__
+
+In order to get a clear understanding of the `cost function` defined above, let us take a look at the `cost` that may be calculated for one single-sample training instance as under:
+
+!(alt_text)[images/single_sample.gif 'single-sample training instance']
+
 ## Evaluation metrics in Logistic Regression
 
 In linear regression, the adjusted statistical terms or metrics are checked in order to evaluate the performance or model fit and accuracy. Following are the evaluation metrics used for Logistic Regression.
