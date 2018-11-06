@@ -296,7 +296,8 @@ In mathematics, the `Negative Log Likelihood` function is also called as `Error 
 
 In order to get a clear understanding of the `cost function` defined above, let us take a look at the `cost` that may be calculated for one single-sample training instance as under:
 
-!(alt_text)[images/single_sample.gif 'single-sample training instance']
+![alt_text](images/single_sample.gif 'single-sample training instance')
+
 
 ## Evaluation metrics in Logistic Regression
 
