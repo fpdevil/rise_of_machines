@@ -224,10 +224,8 @@ Representation of the `Sigmoid` function using `Hypothesis` function:
 
 ![e3]
 
-Substitute the value of `z` with ![e4] in the preceding equation,
-then the equation ![e1]
+Substitute the value of `z` with ![e4] in the preceding equation, then the equation ![e1] is converted to the following
 
-is converted to the following
 ![e5]
 
 
@@ -381,12 +379,11 @@ An `ROC` curve will roughly look as below
 
 [p1]: https://latex.codecogs.com/gif.latex?P%28Y%20%3D%201%7CX%29%20%3D%20%5Cfrac%7Be%5E%7Bw_0%20&plus;%20w_1x%7D%7D%7B1%20&plus;%20e%5E%7Bw_0%20&plus;%20w_1x%7D%7D
 
-[e1]: https://latex.codecogs.com/gif.latex?g%28z%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
+[e1]: https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cbg_white%20%5Cfn_jvn%20g%28z%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
 [e2]: https://latex.codecogs.com/gif.latex?g%28z%29%20%29%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%20%5Cif%20z%20%5Cgeq%200%20%26%20%5C%5C%200%20%5Cif%20z%20%3C%200%20%26%20%5Cend%7Bmatrix%7D%5Cright.
-[e3]:
-https://latex.codecogs.com/gif.latex?h_%7B%5Ctheta%7D%28x%29%20%3D%20g%28%5Ctheta%5ET%7Bx%7D%29
-[e4]: https://latex.codecogs.com/gif.latex?%5Ctheta%5ET%7Bx%7D
-[e5]: https://latex.codecogs.com/gif.latex?h_%5Ctheta%7B%28x%29%7D%20%3D%20g%28%5Ctheta%5E%7BT%7D%7Bx%7D%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-%5Ctheta%5E%7BT%7D%7Bx%7D%7D%7D
+[e3]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20h_w%28x%29%20%3D%20g%28w%5ETx%29
+[e4]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20w%5ETx
+[e5]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20h_w%28x%29%20%3D%20g%28w%5ETx%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-%7Bw%5ETx%7D%7D%7D
 [e6]: https://latex.codecogs.com/gif.latex?z%20%3D%20%5Ctheta%5ET%7Bx%7D%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dw_0x_0%20&plus;%20w_1x_1%20&plus;%20w_2x_2%20&plus;%20...%20&plus;%20w_nx_n
 [e11]: https://latex.codecogs.com/gif.latex?P%28y%20%3D%201%20%7C%20x%3B%20%5Ctheta%29%20%3D%20h_%7B%5Ctheta%7D%28x%29
 [e12]: https://latex.codecogs.com/gif.latex?P%28y%20%3D%200%20%7C%20x%3B%20%5Ctheta%29%20%3D%201%20-%20h_%7B%5Ctheta%7D%28x%29
