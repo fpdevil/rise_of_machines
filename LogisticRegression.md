@@ -271,18 +271,21 @@ Also, from the sigmoid function plot we can interpret that it's similar to the f
 
 where `ŷ` is the predicted probability converted to a bimary outcome via a threshold function.
 
-- Frequency function which is the closed form pf probability mass function is written as
+- __Frequency__ function which is the closed form pf probability mass function is written as
+
 ![e14]
 
 With these, we can express the assumptions made earlier in more compact form as under:
 
 ![e15]
 
-Then the likelihood of the parameter `θ` may be written as:
+Then the likelihood of the weight parameter `𝑤` may be written as:
 
-`L(θ) = P(y|X; θ)`
+`L(𝑤) = P(y|x; 𝑤)`
 
-The likelihood function for the coefficients 𝑤₀ and 𝑤₁ may be written as below:
+This is read as the probability of sample belonging to class `y` given its features `x` parameterized by the weight `𝑤`.
+
+The likelihood function for the coefficients 𝑤₀ and 𝑤₁ may be written as under:
 
 ![alt_text](images/likelihood_codecogs.gif 'maximum likelihood')
 
@@ -399,5 +402,5 @@ An `ROC` curve will roughly look as below
 [e11]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20P%28y%20%3D%201%7Cx%3B%20w%29%20%3D%20h_w%28x%29
 [e12]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20P%28y%20%3D%200%7Cx%3B%20w%29%20%3D%201%20-%20h_w%28x%29
 [e13]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20Pr%28X%20%3D%20x%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20p%20%26%20x%20%3D%201%5C%5C%201%20-%20p%20%26%20x%20%3D%200%20%5Cend%7Bmatrix%7D%5Cright%5C%5C%5C%5C%20%5Cbegin%7Bmatrix%7D%20for%20%26%20all%20%26%200%20%3C%20p%20%3C%201%20%5Cend%7Bmatrix%7D
-[e14]: https://latex.codecogs.com/gif.latex?p%5Exq%5E%7B1%20-%20x%7D%20%3D%20p%5Ex%281%20-%20p%29%5E%7B1%20-%20x%7D
-[e15]: https://latex.codecogs.com/gif.latex?P%28y%20%7C%20x%3B%20%7B%5Ctheta%7D%29%20%3D%20%28h_%7B%5Ctheta%7D%28x%29%29%5Ey%281%20-%20%28h_%7B%5Ctheta%7D%28x%29%29%29%5E%7B1%20-%20y%7D
+[e14]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20p%5Exq%5E%7B1%20-%20x%7D%20%3D%20p%5Ex%281%20-%20p%29%5E%7B1%20-%20x%7D
+[e15]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20P%28y%7Cx%3B%20w%29%20%3D%20%28h_w%28x%29%29%5Ey%281%20-%20h_w%28x%29%29%5E%7B1%20-%20y%7D
