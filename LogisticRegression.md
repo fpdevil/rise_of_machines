@@ -144,7 +144,7 @@ This may further be taken forward to achieve at the sigmoid as below.
 
 ![alt_text](images/logit_sigmoid_codecogs.gif 'sigmoid derivation')
 
-We are interested in predicting the probability that a certain sample belongs to a particular class, which is the inverse form of the `logit` function. It is also called the `Logistic Sigmoid function`, which is abbreviated sometimes as simply `sigmoid` due to it's characteristic __S-Shape_. A plot of the sample `sigmoid` is included during the next section.
+We are interested in predicting the probability that a certain sample belongs to a particular class, which is the inverse form of the `logit` function. It is also called the `Logistic Sigmoid function`, which is abbreviated sometimes as simply `sigmoid` due to it's characteristic __S-Shape__. A plot of the sample `sigmoid` is included during the next section.
 
 *We may argue, why odds, `log(odds)` and not `probability`? The reason is as follows:*
 
@@ -158,7 +158,7 @@ logRange(odds) = [-∞, +∞]
 
 By converting the probability to `log(odds)`, the range of probability is expanded from `[0, 1]` to `[-∞, +∞]`.
 
-This `link` function follows a sigmoid as shown next which limits the range of probabilities between `0` and `1`.
+This `link` function or `logit` follows a sigmoid as shown next which limits the range of probabilities between `0` and `1`.
 
 In `python` such an equation may be coded and visualized as below.
 
@@ -203,22 +203,17 @@ The above code provides the below plot
 
 From the above figure, the below can be inferred
 
-- If the value of `z` is greater than or equal to zero, then the
-logistic function gives an output value of one
+- If the value of `z` is greater than or equal to zero, then the logistic function gives an output value of one
 
-- If the value of `z` is less than zero, then the logistic function
-generates the output zero.
+- If the value of `z` is less than zero, then the logistic function generates the output zero.
 
-So, we may conclude that the `Sigmoid` takes real number values as input and
-transforms them into values in the range `[0, 1]` with an intercept at `g(z) =
-0.5`
+So, we may conclude that the `Sigmoid` takes real number values as input and transforms them into values in the range `[0, 1]` with an intercept at `g(z) = 0.5`
 
 Such inferences can be represented mathematically as follows:
 
 ![e2]
 
-This would be the function which may be used for performing the Binary
-classification.
+This would be the function which may be used for performing the Binary classification.
 
 Representation of the `Sigmoid` function using `Hypothesis` function:
 
@@ -229,7 +224,7 @@ Substitute the value of `z` with ![e4] in the preceding equation, then the equat
 ![e5]
 
 
-### A useful property of the derivative of Sigmoid function.
+### A useful property of the derivative of the Sigmoid function.
 
 Differentiating the `hypothesis` and the `sigmoid`, we can observe the below and arrive at a very useful property
 
@@ -239,29 +234,26 @@ This is an interesting and a useful property of derivative of sigmoid function.
 
 ### Parameter estimation (Given a Logistic Regression model, how do we fit weight 𝑤 for it?)
 
-The goal of the Logistic Regression is to find or estimate the unknown parameters `θ (w₀, w₁, w₂ ... wₙ)` which is done using the __`Maximum Likehood Estimation`__ which entails finding the set of parameters for which the _Probability_ of the observed data is greatest. The `Maximum Likelihood` works in such way that it tries to find the value of the coefficients (𝑤₀, 𝑤₁) such that the predicted probabilities are as close to the observed probabilities as possible.
+The goal of the Logistic Regression is to find or estimate the unknown parameters `𝑤 (w₀, w₁, w₂ ... wₙ)` which is done by  using the __`Maximum Likehood Estimation`__ which entails finding the set of parameters for which the _Probability_ of the observed data is greatest. The `Maximum Likelihood` works in such way that it tries to find the value of the coefficients (just 𝑤₀ & 𝑤₁ OR 𝑤₀, 𝑤₁, 𝑤₂...) such that the predicted probabilities are as close to the observed probabilities as possible.
 
-In other words, for a binary classification [0, 1], the maximum likelihood will try to find the values 𝑤₀ and 𝑤₁ such that the resultant probabilities are closest to either `0` or `1`.
+In other words, for a binary classification [0, 1], the maximum likelihood will try to find the values of coefficients 𝑤₀ and 𝑤₁ (OR 𝑤₀, 𝑤₁, 𝑤₂ ...) such that the resultant probabilities are closest to either `0` or `1`.
 
-So, in essence, we need to find the coefficient `θ` for the best fit model which best explains the training data set, by using the `Maximum Likelihood Estimator` under a set of assumptions. Let's endow our classification model with a set of probabilistic assumptions and then fit the parameters via maximum likelihood.
+- __Bernoulli Distribution__
 
-Below are the probabilistic assumptions we considered:
+Because we are discussing about the discrete variables, at this point it's worth  discussing about the __Bernoulli Distribution__ regarding the discrete random probability. `Bernoulli Distribution` is the probability distribution of a random variable taking on only two values as below
 
-- Probability of a particular sample belonging to class `1`, given it's features `x`  parameterized by the weights `w`.
-![e11]
+- `1` (`success` or `true`) and
+- `0` (`failure` or `false`)
 
-- Probability of a particular sample belonging to class `0`, given it's features `x`  parameterized by the weights `w`.
-![e12]
-
-The `Maximum Likelihood equation` is derived from the probability distribution of the dependent variable.
-
-At this point we can discuss about the __Bernoulli Distribution__ regarding the probability assumptions. `Bernoulli Distribution` is the probability distribution of a random variable taking on only two values, `1`  (`success`) and `0` (`false`) with complementary probabilities `p` and `q` respectively.
+with complementary probabilities `p` and `q` respectively.
 
 Where `p` and `q` are related to each other as `p + q = 1` or `q = 1 - p`.
 
-Mathematically,  `Bernoulli Distribution` is the probability distribution of random variable *X* having rhe `probability mass function` defined as below:
+> Any random variable whose only two possible values are `0` and `1` is called a `Bernoulli random variable`.
 
-- __X__ takes two values `0` and `1`, with probabilities `p` and `1 - p`. That is
+Mathematically,  `Bernoulli Distribution` is the probability distribution of random variable *X* having the `probability mass function` defined as below:
+
+- If a random variable __X__ takes two values `0` and `1`, with probabilities `p` and `1 - p`. Then its `Probability Mass function` is depicted as below:
 
 ![e13]
 
@@ -269,13 +261,30 @@ Also, from the sigmoid function plot we can interpret that it's similar to the f
 
 ![p2]
 
-where `ŷ` is the predicted probability converted to a bimary outcome via a threshold function.
+where `ŷ` is the predicted probability converted to a binary outcome via a threshold function `g(𝑧)`.
 
-- __Frequency__ function which is the closed form pf probability mass function is written as
+- __Frequency__ function which is the closed form of a probability mass function is written as
 
 ![e14]
 
-With these, we can express the assumptions made earlier in more compact form as under:
+
+As discussed earlier, the goal here is to find the coefficient(s) `𝑤` for the best fitting model which best explains the training data set, by using the `Maximum Likelihood Estimator` under a set of assumptions. Let us endow our classification model with a set of probabilistic assumptions and then fit the parameters via maximum likelihood.
+
+_Below are the probabilistic assumptions we considered:_
+
+*Note: These assumptions follow the `Bernoulli distribution` discussed earlier*
+
+- Probability of a particular sample belonging to class `1`, given it's features `x`  parameterized by the weights `w` defined as under:
+
+![e11]
+
+- Probability of a particular sample belonging to class `0`, given it's features `x`  parameterized by the weights `w` defined as under:
+
+![e12]
+
+The `Maximum Likelihood equation` is derived from the probability distribution of the dependent variable (`𝑋`).
+
+With these, we can express the assumptions made earlier in a more compact form as under:
 
 ![e15]
 
