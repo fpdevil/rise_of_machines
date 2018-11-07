@@ -156,7 +156,7 @@ OddsRange = [0, +∞] as Odds = Probability / (1 - Probability)
 logRange(odds) = [-∞, +∞]
 ```
 
-By converting the probability to `log(odds)`, the range of probability is expanded from `[0, 1]` to `[-∞, +∞]`.
+By converting the probability to `log(odds)`, the range of probability is expanded from `[0, 1]` to `[-∞, +∞]`. In other words, applying log reduces the potential for numerical underflow, which can occur during small likelihoods, which is the reason why _natural log_ is applied to the _likelihood_ function later.
 
 This `link` function or `logit` follows a sigmoid as shown next which limits the range of probabilities between `0` and `1`.
 
@@ -306,7 +306,13 @@ Assuming that __n__ training samples were generated independently, the likelihoo
 ![alt_text](images/likelihood_codecogs.gif 'maximum likelihood')
 
 
-In mathematics, the `Negative Log Likelihood` function is also known as `Error Function`.
+In mathematics, the `Negative Log Likelihood` function is also known as `Error Function` or `Cost Function`.
+
+Once we have an __Error or Cost function__ in our hand, we can apply an optimization algorithm such as __gradient descent__ to __minimize__ the cost function; otherwise, we may apply __gradient ascent__ to maximize the log-likelihood function.
+
+With that, the __Cost or Error function__ may be represented as under:
+
+![p3]
 
 - __Single Sample Training Instance__
 
@@ -415,6 +421,8 @@ An `ROC` curve will roughly look as below
 
 [p1]: https://latex.codecogs.com/gif.latex?P%28Y%20%3D%201%7CX%29%20%3D%20%5Cfrac%7Be%5E%7Bw_0%20&plus;%20w_1x%7D%7D%7B1%20&plus;%20e%5E%7Bw_0%20&plus;%20w_1x%7D%7D
 [p2]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20%5Chat%7By%7D%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%20%26%20z%5Cgeq%200.0%5C%5C%200%20%26%20otherwise%20%5Cend%7Bmatrix%7D%5Cright
+[p3]: https://latex.codecogs.com/gif.latex?J%28w%29%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cleft%20%5B%20-y%5E%7B%28i%29%7Dlog%28g%28z%5E%7B%28i%29%7D%29%29%20-%20%281%20-%20y%5E%7B%28i%29%7D%29log%281%20-%20g%28z%5E%7B%28i%29%7D%29%29%20%5Cright%20%5D
+
 
 [e1]: https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cbg_white%20%5Cfn_jvn%20g%28z%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
 [e2]: https://latex.codecogs.com/gif.latex?g%28z%29%20%29%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%20%5Cif%20z%20%5Cgeq%200%20%26%20%5C%5C%200%20%5Cif%20z%20%3C%200%20%26%20%5Cend%7Bmatrix%7D%5Cright.
