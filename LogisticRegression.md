@@ -276,15 +276,19 @@ _Below are the probabilistic assumptions we considered:_
 
 *__Note__: These assumptions follow the `Bernoulli distribution` discussed earlier*
 
-- Probability of a particular sample belonging to class `1`, given it's features `x`  parameterized by the weights `w` defined as under:
+- Assumption 1
+  
+  Probability of a particular sample belonging to class `1`, given it's features `x` parameterized by the weights `w` defined as under:
 
 ![e11]
 
-- Probability of a particular sample belonging to class `0`, given it's features `x`  parameterized by the weights `w` defined as under:
+- Assumption 2
+  
+  Probability of a particular sample belonging to class `0`, given it's features `x`  parameterized by the weights `w` defined as under:
 
 ![e12]
 
-The `Maximum Likelihood equation` is derived from the probability distribution of the dependent variable (`𝑋`).
+The `Maximum Likelihood equation` is derived from the probability distribution of the independent variable (`𝑥`) and dependent variable ('𝑦').
 
 With these, we can express the assumptions made earlier in a more compact form as under:
 
@@ -296,13 +300,13 @@ Then the likelihood of the weight parameter `𝑤` may be written as:
 
 This is read as the probability of a sample belonging to class `y` given its features `x` parameterized by the weight `𝑤`.
 
-The likelihood function for the coefficients 𝑤₀ and 𝑤₁ may be written as under:
+Assuming that __n__ training samples were generated independently, the likelihood function for the coefficients 𝑤₀, 𝑤₁... may be written as under:
 
 
 ![alt_text](images/likelihood_codecogs.gif 'maximum likelihood')
 
 
-In mathematics, the `Negative Log Likelihood` function is also called as `Error Function`.
+In mathematics, the `Negative Log Likelihood` function is also known as `Error Function`.
 
 - __Single Sample Training Instance__
 
