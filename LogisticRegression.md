@@ -268,11 +268,13 @@ where `ŷ` is the predicted probability converted to a binary outcome via a thre
 ![e14]
 
 
-As discussed earlier, the goal here is to find the coefficient(s) `𝑤` for the best fitting model which best explains the training data set, by using the `Maximum Likelihood Estimator` under a set of assumptions. Let us endow our classification model with a set of probabilistic assumptions and then fit the parameters via maximum likelihood.
+#### finding the coefficients
+
+As discussed earlier, the goal here is to find the coefficient(s) `𝑤` for the best fitting model which best explains the training data set, by using the `Maximum Likelihood Estimator` under a set of assumptions. Let us endow our classification model with a set of probabilistic assumptions and then fit the parameters via *maximum likelihood*.
 
 _Below are the probabilistic assumptions we considered:_
 
-*Note: These assumptions follow the `Bernoulli distribution` discussed earlier*
+*__Note__: These assumptions follow the `Bernoulli distribution` discussed earlier*
 
 - Probability of a particular sample belonging to class `1`, given it's features `x`  parameterized by the weights `w` defined as under:
 
@@ -292,9 +294,10 @@ Then the likelihood of the weight parameter `𝑤` may be written as:
 
 `L(𝑤) = P(y|x; 𝑤)`
 
-This is read as the probability of sample belonging to class `y` given its features `x` parameterized by the weight `𝑤`.
+This is read as the probability of a sample belonging to class `y` given its features `x` parameterized by the weight `𝑤`.
 
 The likelihood function for the coefficients 𝑤₀ and 𝑤₁ may be written as under:
+
 
 ![alt_text](images/likelihood_codecogs.gif 'maximum likelihood')
 
