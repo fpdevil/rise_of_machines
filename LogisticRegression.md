@@ -358,7 +358,7 @@ plt.show()
 ```
 
 
-![alt_text](images/single-classifier.png "single sample classifier")
+![cost of classifying single sample instance](images/single_classifier.png "single sample classifier")
 
 From the above figure it can be inferred that the cost reaches `0` if the
 prediction is correct for the sample belonging to either `class 1` or `class
