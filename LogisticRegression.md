@@ -103,7 +103,7 @@ Logistic Regression assumes that the dependent (response variable) follows a Bin
 
 2. Every trial can only have two outcomes, which means that the response variable (`y`) can only have two unique categories.
 
-3. The outcome from each trial must be independent of each other. In other words, the response variable's levels must be independent of each other.
+3. The outcome from each trial must be independent of each other. In other words, the response variable"s levels must be independent of each other.
 
 4. The probability of success `p` and the failure `q` (1 - p) must be the same for any trial.
 
@@ -121,7 +121,7 @@ The mathematical equation of `Logistic` or `Sigmoid` function is as shown below
 
 where `z` is the weighted sum defined as under
 
-![alt_text](images/weights_codecogs.gif 'weighted sum')
+![alt_text](images/weights_codecogs.gif "weighted sum')
 
 Here `𝑃(𝑌 = 1 | 𝑋)` is read as the probability of `Y = 1` given some value of `X` and `𝑌 ∈ [0, 1]`
 It may also be written as `g(z) = 𝑃(𝑌 = 1 | 𝑋; 𝑤)` in which case it's defined as the probability of a particular sample belonging to class 1, given it's features x parameterized by the weights `w`.
@@ -138,11 +138,11 @@ From the above equation of `logit`, it can be inferred that the right side is a 
 
 So, Logistic Regression applies maximum likelihood estimation after transforming the dependent variable into a `logit` variable (a natural log of odds of the dependent variable occurring or not) with respect to independent variables. In the following equation, `log` of odds changes linearly as a function of explanatory variables.
 
-![alt_text](images/logodds_codecogs.gif 'log odds')
+![alt_text](images/logodds_codecogs.gif "log odds")
 
 This may further be taken forward to achieve at the sigmoid as below.
 
-![alt_text](images/logit_sigmoid_codecogs.gif 'sigmoid derivation')
+![alt_text](images/logit_sigmoid_codecogs.gif "sigmoid derivation")
 
 We are interested in predicting the probability that a certain sample belongs to a particular class, which is the inverse form of the `logit` function. It is also called the `Logistic Sigmoid function`, which is abbreviated sometimes as simply `sigmoid` due to it's characteristic __S-Shape__. A plot of the sample `sigmoid` is included during the next section.
 
@@ -228,7 +228,7 @@ Substitute the value of `z` with ![e4] in the preceding equation, then the equat
 
 Differentiating the `hypothesis` and the `sigmoid`, we can observe the below and arrive at a very useful property
 
-![alt_text](images/sigmoid_simplify_codecogs.gif 'differentiating the sigmoid')
+![alt_text](images/sigmoid_simplify_codecogs.gif "differentiating the sigmoid")
 
 This is an interesting and a useful property of derivative of sigmoid function.
 
@@ -240,7 +240,7 @@ In other words, for a binary classification [0, 1], the maximum likelihood will 
 
 - __Bernoulli Distribution__
 
-Because we are discussing about the discrete variables, at this point it's worth  discussing about the __Bernoulli Distribution__ regarding the discrete random probability. `Bernoulli Distribution` is the probability distribution of a random variable taking on only two values as below
+Because we are discussing about the discrete variables, at this point it"s worth  discussing about the __Bernoulli Distribution__ regarding the discrete random probability. `Bernoulli Distribution` is the probability distribution of a random variable taking on only two values as below
 
 - `1` (`success` or `true`) and
 - `0` (`failure` or `false`)
@@ -277,13 +277,13 @@ _Below are the probabilistic assumptions we considered:_
 *__Note__: These assumptions follow the `Bernoulli distribution` discussed earlier*
 
 - Assumption 1
-  
+
   Probability of a particular sample belonging to class `1`, given it's features `x` parameterized by the weights `w` defined as under:
 
 ![e11]
 
 - Assumption 2
-  
+
   Probability of a particular sample belonging to class `0`, given it's features `x`  parameterized by the weights `w` defined as under:
 
 ![e12]
@@ -303,7 +303,7 @@ This is read as the probability of a sample belonging to class `y` given its fea
 Assuming that __n__ training samples were generated independently, the likelihood function for the coefficients 𝑤₀, 𝑤₁... may be written as under:
 
 
-![alt_text](images/likelihood_codecogs.gif 'maximum likelihood')
+![alt_text](images/likelihood_codecogs.gif "maximum likelihood")
 
 
 In mathematics, the `Negative Log Likelihood` function is also known as `Error Function` or `Cost Function`.
@@ -318,8 +318,53 @@ With that, the __Cost or Error function__ may be represented as under:
 
 In order to get a clear understanding of the `cost function` defined above, let us take a look at the `cost` that may be calculated for one single-sample training instance as under:
 
-![alt_text](images/single_sample.gif 'single-sample training instance')
+![alt_text](images/single_sample.gif "single-sample training instance")
 
+### The next section illustrates the cost of classifying this single-sample training instance for different values of _g(z)_ using python
+
+Here is a plot of __g(z)__ against cost function __J(w)__ using python, which
+shows the _sigmoid_ activation on the __x-axis__ within range `0` through `1`
+and the associated logistic cost over __y-axis__. The input values to
+`sigmoid`, _z_ is in the range of [-10, 10].
+
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def sigmoid(z):
+    return 1.0 / (1.0 + np.exp(-z))
+
+def cost_y_1(z):
+    return -np.log(sigmoid(z))
+
+def cost_y_2(z):
+    return -np.log(1 - sigmoid(z))
+
+# plotting the error/cost function
+z = np.arange(-10, 10, 0.1)
+g_z = sigmoid(z)
+c1 = [cost_y_1(x) for x in z]
+plt.plot(g_z, c1, label='Cost function J(w) for y = 1')
+c0 = [cost_y_2(x) for x in z]
+plt.plot(g_z, c0, linestyle='-.', label='Cost function J(w) for y = 0')
+plt.xlim([0, 1])
+plt.ylim([0.0, 5.1])
+plt.xlabel('g(z)')
+plt.ylabel('J(w)')
+plt.legend(loc='best')
+plt.show()
+
+```
+
+
+![cost of classifying single sample instance](images/single-classifier.png "single sample classifier")
+
+From the above figure it can be inferred that the cost reaches `0` if the
+prediction is correct for the sample belonging to either `class 1` or `class
+0`; but if the prediction is wrong, then the cost shoots up towards __infinity__
+on both cases, which indicates that the wrong predictions are penalized with
+an increasingly larger cost.
 
 ## Evaluation metrics in Logistic Regression
 
@@ -379,12 +424,12 @@ In practice, `AIC` is given higher priority than `Deviance` to evaluate a model 
 
 
 __3. Confusion Matrix__: This is the most critical metric commonly used in
-   evaluating classification models. Apt to it's name, Confusion matrix is
+   evaluating classification models. Apt to it"s name, Confusion matrix is
    quite confusing.
 
 Here is a simple visualization to understand the `Confusion Matrix`
 
-![alt_text](images/confusion_matrix.png 'Confusion Matrix')
+![alt_text](images/confusion_matrix.png "Confusion Matrix")
 
 As can be seen from the figure, the confusion matrix avoids __confusion__ by measuring the actual and predicted values in a tabular format. In the table above, `Positive class = True or 1 and Negative class = False or 0`.
 
@@ -403,7 +448,7 @@ Following are the metrics we can derive from a confusion matrix:
 
 Here is a list of all the metrics:
 
-![alt_text](images/confusionmatrics_codecogs.gif 'Metrics from the Confusion Matrix')
+![alt_text](images/confusionmatrics_codecogs.gif "Metrics from the Confusion Matrix')
 
 __4. Receiver Operating Characteristic (`ROC`) Curve__
 
@@ -417,11 +462,11 @@ The Area Under Curve `AUC`, referred to as index of accuracy (`A`) or concordanc
 
 An `ROC` curve will roughly look as below
 
-![alt_text](images/roc.png 'ROC Plot')
+![alt_text](images/roc.png "ROC Plot")
 
 [p1]: https://latex.codecogs.com/gif.latex?P%28Y%20%3D%201%7CX%29%20%3D%20%5Cfrac%7Be%5E%7Bw_0%20&plus;%20w_1x%7D%7D%7B1%20&plus;%20e%5E%7Bw_0%20&plus;%20w_1x%7D%7D
 [p2]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20%5Chat%7By%7D%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%20%26%20z%5Cgeq%200.0%5C%5C%200%20%26%20otherwise%20%5Cend%7Bmatrix%7D%5Cright
-[p3]: https://latex.codecogs.com/gif.latex?J%28w%29%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cleft%20%5B%20-y%5E%7B%28i%29%7Dlog%28g%28z%5E%7B%28i%29%7D%29%29%20-%20%281%20-%20y%5E%7B%28i%29%7D%29log%281%20-%20g%28z%5E%7B%28i%29%7D%29%29%20%5Cright%20%5D
+[p3]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_cs%20J%28w%29%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cleft%20%5B%20-y%5E%7B%28i%29%7Dlog%28g%28z%5E%7B%28i%29%7D%29%29%29%20-%20%281%20-%20y%5E%7B%28i%29%7D%29log%281%20-%20g%28z%5E%7B%28i%29%7D%29%29%20%5Cright%20%5D
 
 
 [e1]: https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cbg_white%20%5Cfn_jvn%20g%28z%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
