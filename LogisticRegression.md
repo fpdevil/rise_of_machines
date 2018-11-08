@@ -121,10 +121,12 @@ The mathematical equation of `Logistic` or `Sigmoid` function is as shown below
 
 where `z` is the weighted sum defined as under
 
-![alt_text](images/weights_codecogs.gif "weighted sum')
+![alt_text](images/weights_codecogs.gif "weighted sums")
 
 Here `𝑃(𝑌 = 1 | 𝑋)` is read as the probability of `Y = 1` given some value of `X` and `𝑌 ∈ [0, 1]`
-It may also be written as `g(z) = 𝑃(𝑌 = 1 | 𝑋; 𝑤)` in which case it's defined as the probability of a particular sample belonging to class 1, given it's features x parameterized by the weights `w`.
+It may also be written as `g(z) = 𝑃(𝑌 = 1 | 𝑋; 𝑤)` or `ϕ(𝑧) = 𝑃(𝑌 = 1 | 𝑋; 𝑤)` in which case it's defined as the probability of a particular sample belonging to class 1, given it's features 𝑥 parameterized by the weights `𝑤`.
+
+The notation for the Activation function is either __g(𝑧)__ or __ϕ(𝑧)__.
 
 In order to find the link function, we can use algebraic calculus and proceed as below.
 
@@ -182,7 +184,7 @@ plt.plot(x, s)
 plt.xlim()
 plt.ylim(-0.1, 1.1)
 plt.xlabel('z')
-plt.ylabel('g(z)')
+plt.ylabel('$\phi$(z)')
 
 plt.xticks()
 plt.yticks([0.0, 0.5, 1.0])
@@ -190,9 +192,9 @@ ax = plt.gca()
 ax.yaxis.grid(True)
 
 plt.title('Sigmoid function')
-plt.text(-7.5, 0.85, r'$g(z) = \frac{1}{1 + e^{-z}}$')
-plt.text(-7.5, 0.70, r'$z \rightarrow  \infty  ; g(z) \rightarrow 1$')
-plt.text(-7.5, 0.65, r'$z \rightarrow  -\infty  ; g(z) \rightarrow 0$')
+plt.text(-7.5, 0.85, r'$\phi(z) = \frac{1}{1 + e^{-z}}$')
+plt.text(-7.5, 0.70, r'$z \rightarrow  \infty  ; \phi(z) \rightarrow 1$')
+plt.text(-7.5, 0.65, r'$z \rightarrow  -\infty  ; \phi(z) \rightarrow 0$')
 
 plt.show()
 ```
@@ -207,7 +209,7 @@ From the above figure, the below can be inferred
 
 - If the value of `z` is less than zero, then the logistic function generates the output zero.
 
-So, we may conclude that the `Sigmoid` takes real number values as input and transforms them into values in the range `[0, 1]` with an intercept at `g(z) = 0.5`
+So, we may conclude that the `Sigmoid` takes real number values as input and transforms them into values in the range `[0, 1]` with an intercept at `g(z) = 0.5 or φ(z) = 0.5`.
 
 Such inferences can be represented mathematically as follows:
 
@@ -215,11 +217,11 @@ Such inferences can be represented mathematically as follows:
 
 This would be the function which may be used for performing the Binary classification.
 
-Representation of the `Sigmoid` function using `Hypothesis` function:
+Representation of the `Sigmoid` function using `Hypothesis` function may be defined as below:
 
 ![e3]
 
-Substitute the value of `z` with ![e4] in the preceding equation, then the equation ![e1] is converted to the following
+Substitute the value of `z` with ![e4] in the preceding equation, then the equation ![e7] is converted to the following
 
 ![e5]
 
@@ -261,7 +263,7 @@ Also, from the sigmoid function plot we can interpret that it's similar to the f
 
 ![p2]
 
-where `ŷ` is the predicted probability converted to a binary outcome via a threshold function `g(𝑧)`.
+where `ŷ` is the predicted probability converted to a binary outcome via a threshold function `ϕ(𝑧)`.
 
 - __Frequency__ function which is the closed form of a probability mass function is written as
 
@@ -306,6 +308,9 @@ Assuming that __n__ training samples were generated independently, the likelihoo
 ![alt_text](images/likelihood_codecogs.gif "maximum likelihood")
 
 
+In the above derivation, we arrived at the final simplified version in terms of `ϕ(𝑧)` because of the relation or identity, ![p4]
+
+
 In mathematics, the `Negative Log Likelihood` function is also known as `Error Function` or `Cost Function`.
 
 Once we have an __Error or Cost function__ in our hand, we can apply an optimization algorithm such as __gradient descent__ to __minimize__ the cost function; otherwise, we may apply __gradient ascent__ to maximize the log-likelihood function.
@@ -322,10 +327,7 @@ In order to get a clear understanding of the `cost function` defined above, let 
 
 ### The next section illustrates the cost of classifying this single-sample training instance for different values of _g(z)_ using python
 
-Here is a plot of __g(z)__ against cost function __J(w)__ using python, which
-shows the _sigmoid_ activation on the __x-axis__ within range `0` through `1`
-and the associated logistic cost over __y-axis__. The input values to
-`sigmoid`, _z_ is in the range of [-10, 10].
+Here is a plot of __ϕ(𝑧)__ against the cost function __J(w)__ using python, which shows the _sigmoid_ activation on the __x-axis__ within range `0` through `1` and the associated logistic cost over __y-axis__. The input values to `sigmoid`, _z_ is in the range of [-10, 10].
 
 
 ```python
@@ -343,14 +345,14 @@ def cost_y_2(z):
 
 # plotting the error/cost function
 z = np.arange(-10, 10, 0.1)
-g_z = sigmoid(z)
+phi_z = sigmoid(z)
 c1 = [cost_y_1(x) for x in z]
-plt.plot(g_z, c1, label='Cost function J(w) for y = 1')
+plt.plot(phi_z, c1, label='Cost function J(w) for y = 1')
 c0 = [cost_y_2(x) for x in z]
-plt.plot(g_z, c0, linestyle='-.', label='Cost function J(w) for y = 0')
+plt.plot(phi_z, c0, linestyle='-.', label='Cost function J(w) for y = 0')
 plt.xlim([0, 1])
 plt.ylim([0.0, 5.1])
-plt.xlabel('g(z)')
+plt.xlabel('$\phi$(z)')
 plt.ylabel('J(w)')
 plt.legend(loc='best')
 plt.show()
@@ -358,7 +360,8 @@ plt.show()
 ```
 
 
-![cost of classifying single sample instance](images/single_classifier.png "single sample classifier")
+![cost of classifying single sample instance](images/single_classifier.png
+"cost of a single sample classifier")
 
 From the above figure it can be inferred that the cost reaches `0` if the
 prediction is correct for the sample belonging to either `class 1` or `class
@@ -466,15 +469,17 @@ An `ROC` curve will roughly look as below
 
 [p1]: https://latex.codecogs.com/gif.latex?P%28Y%20%3D%201%7CX%29%20%3D%20%5Cfrac%7Be%5E%7Bw_0%20&plus;%20w_1x%7D%7D%7B1%20&plus;%20e%5E%7Bw_0%20&plus;%20w_1x%7D%7D
 [p2]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20%5Chat%7By%7D%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%20%26%20z%5Cgeq%200.0%5C%5C%200%20%26%20otherwise%20%5Cend%7Bmatrix%7D%5Cright
-[p3]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_cs%20J%28w%29%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cleft%20%5B%20-y%5E%7B%28i%29%7Dlog%28g%28z%5E%7B%28i%29%7D%29%29%29%20-%20%281%20-%20y%5E%7B%28i%29%7D%29log%281%20-%20g%28z%5E%7B%28i%29%7D%29%29%20%5Cright%20%5D
+[p3]: https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cfn_jvn%20J%28w%29%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cleft%20%5B%20-y%5E%7B%28i%29%7Dlog%28%5Cphi%28z%5E%7B%28i%29%7D%29%29%20-%20%281%20-%20y%5E%7B%28i%29%7D%29%281%20-%20%5Cphi%28z%5E%7B%28i%29%7D%29%29%20%5Cright%20%5D%5C%5C%20%5CRightarrow%20J%28w%29%20%3D%20-%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cleft%20%5B%20y%5E%7B%28i%29%7Dlog%28%5Cphi%28z%5E%7B%28i%29%7D%29%29%20&plus;%20%281%20-%20y%5E%7B%28i%29%7D%29%281%20-%20%5Cphi%28z%5E%7B%28i%29%7D%29%29%20%5Cright%20%5D
+[p4]: https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cfn_jvn%20h_w%28x%29%20%3D%20%5Cphi%28w%5ETx%29%20%3D%20%5Cphi%28z%29
 
 
-[e1]: https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cbg_white%20%5Cfn_jvn%20g%28z%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
-[e2]: https://latex.codecogs.com/gif.latex?g%28z%29%20%29%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%20%5Cif%20z%20%5Cgeq%200%20%26%20%5C%5C%200%20%5Cif%20z%20%3C%200%20%26%20%5Cend%7Bmatrix%7D%5Cright.
-[e3]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20h_w%28x%29%20%3D%20g%28w%5ETx%29
+[e1]: https://latex.codecogs.com/gif.latex?%7B%5Ccolor%7BDarkRed%7D%20%5Cbegin%7Bmatrix%7D%20%5Cphi%28z%29%20%26%20or%20%26%20g%28z%29%20%5Cend%7Bmatrix%7D%7D%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
+[e2]: https://latex.codecogs.com/gif.latex?%5Cfn_jvn%20%7B%5Ccolor%7BDarkGreen%7D%20%5Cphi%28z%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%201%20%26%20if%20%26%20z%20%5Cgeq%200%5C%5C%200%20%26%20if%20%26%20z%20%3C%201%20%5Cend%7Bmatrix%7D%5Cright.%20%7D
+[e3]: https://latex.codecogs.com/gif.latex?%5Cfn_jvn%20%7B%5Ccolor%7BTeal%7D%20h_w%28x%29%20%3D%20%5Cphi%28w%5ETx%29%20%7D
 [e4]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20w%5ETx
-[e5]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20h_w%28x%29%20%3D%20g%28w%5ETx%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-%7Bw%5ETx%7D%7D%7D
+[e5]: https://latex.codecogs.com/gif.latex?%5Cfn_jvn%20%7B%5Ccolor%7BTeal%7D%20h_w%28x%29%20%3D%20%5Cphi%28w%5ETx%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-w%5ETx%7D%7D%20%7D
 [e6]: https://latex.codecogs.com/gif.latex?z%20%3D%20%5Ctheta%5ET%7Bx%7D%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dw_0x_0%20&plus;%20w_1x_1%20&plus;%20w_2x_2%20&plus;%20...%20&plus;%20w_nx_n
+[e7]: https://latex.codecogs.com/gif.latex?%5Cinline%20%7B%5Ccolor%7BDarkRed%7D%20%5Cbegin%7Bmatrix%7D%20%5Cphi%28z%29%20%26%20or%20%26%20g%28z%29%20%5Cend%7Bmatrix%7D%7D%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
 [e11]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20P%28y%20%3D%201%7Cx%3B%20w%29%20%3D%20h_w%28x%29
 [e12]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20P%28y%20%3D%200%7Cx%3B%20w%29%20%3D%201%20-%20h_w%28x%29
 [e13]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20Pr%28X%20%3D%20x%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20p%20%26%20x%20%3D%201%5C%5C%201%20-%20p%20%26%20x%20%3D%200%20%5Cend%7Bmatrix%7D%5Cright%5C%5C%5C%5C%20%5Cbegin%7Bmatrix%7D%20for%20%26%20all%20%26%200%20%3C%20p%20%3C%201%20%5Cend%7Bmatrix%7D

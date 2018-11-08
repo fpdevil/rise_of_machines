@@ -40,12 +40,12 @@ plt.rc('font', size=14)
 
 plt.title('Logistic Sigmoid')
 plt.xlabel('z')
-plt.ylabel('g(z)')
+plt.ylabel('$\phi$(z)')
 
 # set some math info on the graph
-plt.text(-9.0, 0.85, r'$g(z) = \frac{1}{1 + e^{-z}}$')
-plt.text(-9.0, 0.70, r'$z \rightarrow +\infty \Leftrightarrow g(z) \rightarrow 1$')
-plt.text(-9.0, 0.60, r'$z \rightarrow -\infty \Leftrightarrow g(z) \rightarrow 0$')
+plt.text(-9.0, 0.85, r'$\phi(z) = \frac{1}{1 + e^{-z}}$')
+plt.text(-9.0, 0.70, r'$z \rightarrow +\infty \Leftrightarrow \phi(z) \rightarrow 1$')
+plt.text(-9.0, 0.60, r'$z \rightarrow -\infty \Leftrightarrow \phi(z) \rightarrow 0$')
 
 # draw dotted lines crossing at (0, 0.5)
 plt.axvline(linewidth=2, color='g', linestyle='dashed')
