@@ -62,22 +62,21 @@ The input variables are typically denoted using the symbol X, with a subscript t
 The input variables may also be known with other names like `predictors`, `independent variables`, `features` or sometimes as just `variables`.
 The output variables may also be known as `response` or `dependent` variables.
 
-With the above example of Car, we can write an equation representing some kind of relation between the car mileage (Y) and the input parameters as below.
+With the above example of Car, we can write an equation representing some kind of relation between the car mileage (𝑌) and the input parameters (𝑋𝑛) as below.
 
 `Y = 𝑤₀𝑋₀ + 𝑤₁𝑋₁ + 𝑤₂𝑋₂ + 𝑤₃𝑋₃`
 
-`𝑤₀` refers to the bias unit, and is an additional input value that we provide
-    for `𝑋₀ = 1`
+`𝑤₀` refers to the bias unit, and is an additional input value that we provide for `𝑋₀ = 1`
 
 With that, the equation becomes `Y = bias + 𝑤₁𝑋₁ + 𝑤₂𝑋₂ + 𝑤₃𝑋₃`
 
-or `Y = f(X) + ϵ`       (where `ϵ` is the error term)
+or `Y = f(X) + ϵ`       (where `ϵ` is the error term or bias)
 
-where `bias` is the error term
-       the coefficients 𝑤₁, 𝑤₂ and 𝑤₃ are the coefficients of independent variables,
-       obtained as the best mathematical fit of specified model or equation.
+Here `bias` is the error term and
 
-A coefficient indicates the impact of each independent variable on the outcome variable adjusting for all other independent variables. The model serves two purposes.
+The weight coefficients 𝑤₁, 𝑤₂ and 𝑤₃... are the coefficients of independent variables, obtained as the best mathematical fit of specified model or equation.
+
+A coefficient indicates the impact of each independent variable on the outcome variable adjusting for all other independent variables. Such a model serves two purposes.
 
   1. It can predict the value of dependent variable for new values of independent variables
   2. It can help describe the relative contribution of each independent variable to dependent variable,
@@ -85,7 +84,7 @@ A coefficient indicates the impact of each independent variable on the outcome v
 
 ## Logistic Regression
 
-`Logistic Regression` also known as `Logit model` or `Logistic model` analyzes the relationship between multiple independent variables and a categorical dependent variable, and estimates the probability of occurrence of an event by fitting data to a Logistic curve.
+__`Logistic Regression`__ also known as `Logit model` or `Logistic model` analyzes the relationship between multiple independent variables and a categorical dependent variable, and estimates the probability of occurrence of an event by fitting data to a Logistic curve.
 
 There are two models within logistic regression as listed below:
 
@@ -95,48 +94,49 @@ There are two models within logistic regression as listed below:
 `Binary Logistic Regression` would be typically useful when the dependent variable is dichotomous (can fall into 2 categories like Head & Tail; Pass or Fail; 0 or 1 etc.) and the independent variables are either Continuous or Categorical.
 When the dependent variable is not dichotomous and is comprised of more than 2 categories, a `Multinomial Logistic Regression` may be used.
 
-Despite the name being `Logistic Regression`, it's used in the classification category to predict the discrete output. It's mostly used as a binary class classifier and the binary logistic model is used to estimate the probability of a binary response and it generates the response based on one or more predictors or independent vaiables or features.
+Despite the name being `Logistic Regression`, it's used in the classification category to predict the discrete output. It's mostly used as a binary class classifier and the *binary logistic model* is used to estimate the probability of a binary response and it generates the response based on one or more predictors or independent variables or features.
 
-Logistic Regression assumes that the dependent (response variable) follows a Binomial distribution which can have the following characteristics
+Logistic Regression assumes that the *dependent variable* (response variable) follows a *Binomial distribution* which can have the following characteristics
 
 1. The number of trials are fixed, say `n` i.e., the number of rows in the data set must be a fixed number.
 
-2. Every trial can only have two outcomes, which means that the response variable (`y`) can only have two unique categories.
+2. Every trial can only have two outcomes, which means that the response variable (`𝑦`) can only have two unique categories.
 
 3. The outcome from each trial must be independent of each other. In other words, the response variable"s levels must be independent of each other.
 
-4. The probability of success `p` and the failure `q` (1 - p) must be the same for any trial.
+4. The probability of success `𝑝` and the failure `𝑞` *(1 - 𝑝)* must be the same for any trial.
 
-## Sigmoid function
+## The Sigmoid function
 
 The Logistic Regression algorithm employs a `Logistic function` or `Sigmoid function`. The `Sigmoid function` is used as a hypothesis function which the machine will use to classify the data and predict labels or the target variables. Here the target variables can be either `0` or `1` as the model is probabilistic and probabilities always lie between `0` and `1`.
 
-So, mathematically if `y` is the output label then y ∈ [0, 1]
+So, mathematically if `𝑦` is the output label then 𝑦 ∈ [0, 1]
 
-The hypothesis function can convert the output value to either zero or one and the `sigmoid` exactly does that.
+The hypothesis function should convert the output value to either zero or one and the `sigmoid` exactly does that.
 
 The mathematical equation of `Logistic` or `Sigmoid` function is as shown below
 
 ![e1]
 
-where `z` is the weighted sum defined as under
+where `𝑧` is the weighted sum defined as under
 
 ![alt_text](images/weights_codecogs.gif "weighted sums")
 
-Here `𝑃(𝑌 = 1 | 𝑋)` is read as the probability of `Y = 1` given some value of `X` and `𝑌 ∈ [0, 1]`
+Here `𝑃(𝑌 = 1 | 𝑋)` is read as the probability of `𝑌 = 1` given some value of `𝑋` and `𝑌 ∈ [0, 1]`.
+
 It may also be written as `g(z) = 𝑃(𝑌 = 1 | 𝑋; 𝑤)` or `ϕ(𝑧) = 𝑃(𝑌 = 1 | 𝑋; 𝑤)` in which case it's defined as the probability of a particular sample belonging to class 1, given it's features 𝑥 parameterized by the weights `𝑤`.
 
-The notation for the Activation function is either __g(𝑧)__ or __ϕ(𝑧)__.
+> Note: The notation for the Activation function can be either __g(𝑧)__ or __ϕ(𝑧)__.
 
 In order to find the link function, we can use algebraic calculus and proceed as below.
 
-Assuming `𝑃(𝑌 = 1 | 𝑋)` as just `𝑝(𝑋)`
+Assuming `𝑃(𝑌 = 1 | 𝑋)` as just `𝑝(𝑋)` for mathematical solving...
 
 ![alt_text](images/link_codecogs.gif "link function")
 
 Here, `𝑃(𝑌 = 1 | 𝑋)` is the conditional probability that a particular sample belongs to class 1 given it's features `𝑋`.
 
-From the above equation of `logit`, it can be inferred that the right side is a linear combination of independent variables. The left side is known as the __log - odds__ or __odds ratio__ or __logit__ function and is the `link` function for Logistic Regression.
+From the above equation of `logit`, it can be inferred that the right side is a linear combination of independent variables. The left side is known as the __log-odds__ or __odds ratio__ or __logit__ function and is the `link` function for Logistic Regression.
 
 So, Logistic Regression applies maximum likelihood estimation after transforming the dependent variable into a `logit` variable (a natural log of odds of the dependent variable occurring or not) with respect to independent variables. In the following equation, `log` of odds changes linearly as a function of explanatory variables.
 
@@ -146,7 +146,7 @@ This may further be taken forward to achieve at the sigmoid as below.
 
 ![alt_text](images/logit_sigmoid_codecogs.gif "sigmoid derivation")
 
-We are interested in predicting the probability that a certain sample belongs to a particular class, which is the inverse form of the `logit` function. It is also called the `Logistic Sigmoid function`, which is abbreviated sometimes as simply `sigmoid` due to it's characteristic __S-Shape__. A plot of the sample `sigmoid` is included during the next section.
+By the application of _Logistic regression_, we are interested in predicting the probability that a certain sample belongs to a particular class, which is the inverse form of the `logit` function. It is also called the `Logistic Sigmoid function`, which is abbreviated sometimes as simply `sigmoid` due to it's characteristic __S-Shape__. A plot of the sample `sigmoid` is included during the next section.
 
 *We may argue, why odds, `log(odds)` and not `probability`? The reason is as follows:*
 
@@ -158,7 +158,7 @@ OddsRange = [0, +∞] as Odds = Probability / (1 - Probability)
 logRange(odds) = [-∞, +∞]
 ```
 
-By converting the probability to `log(odds)`, the range of probability is expanded from `[0, 1]` to `[-∞, +∞]`. In other words, applying log reduces the potential for numerical underflow, which can occur during small likelihoods, which is the reason why _natural log_ is applied to the _likelihood_ function later.
+By converting the probability to `log(odds)`, the range of probability is expanded from `[0, 1]` to `[-∞, +∞]`. In other words, applying log reduces the potential for numerical underflow, which can occur during small likelihoods, which is the reason why _natural log_ is applied to the _likelihood_ function (as shown later).
 
 This `link` function or `logit` follows a sigmoid as shown next which limits the range of probabilities between `0` and `1`.
 
@@ -199,11 +199,11 @@ plt.text(-7.5, 0.65, r'$z \rightarrow  -\infty  ; \phi(z) \rightarrow 0$')
 plt.show()
 ```
 
-The above code provides the below plot
+The above code when run, provides the below plot
 
 ![alt_text](images/sigmoid.png "sigmoid function")
 
-From the above figure, the below can be inferred
+From the figure above, the below points can be inferred
 
 - If the value of `z` is greater than or equal to zero, then the logistic function gives an output value of one
 
@@ -217,49 +217,50 @@ Such inferences can be represented mathematically as follows:
 
 This would be the function which may be used for performing the Binary classification.
 
-Representation of the `Sigmoid` function using `Hypothesis` function may be defined as below:
+- Representation of the `Sigmoid` function using `Hypothesis` function may be defined as below:
 
 ![e3]
 
-Substitute the value of `z` with ![e4] in the preceding equation, then the equation ![e7] is converted to the following
+By substituting the value of `z` with ![e4] in the preceding equation, the equation ![e7] is converted to the following form:
 
 ![e5]
 
 
 ### A useful property of the derivative of the Sigmoid function.
 
-Differentiating the `hypothesis` and the `sigmoid`, we can observe the below and arrive at a very useful property
+Differentiating the `hypothesis` and the `sigmoid`, we can observe the below and arrive at a very useful property which is used/applied later.
 
 ![alt_text](images/sigmoid_simplify_codecogs.gif "differentiating the sigmoid")
 
 This is an interesting and a useful property of derivative of sigmoid function.
 
-### Parameter estimation (Given a Logistic Regression model, how do we fit weight 𝑤 for it?)
+### Parameter estimation (Given a Logistic Regression model, how do we fit the weight 𝑤 for it?)
 
 The goal of the Logistic Regression is to find or estimate the unknown parameters `𝑤 (w₀, w₁, w₂ ... wₙ)` which is done by  using the __`Maximum Likehood Estimation`__ which entails finding the set of parameters for which the _Probability_ of the observed data is greatest. The `Maximum Likelihood` works in such way that it tries to find the value of the coefficients (just 𝑤₀ & 𝑤₁ OR 𝑤₀, 𝑤₁, 𝑤₂...) such that the predicted probabilities are as close to the observed probabilities as possible.
 
-In other words, for a binary classification [0, 1], the maximum likelihood will try to find the values of coefficients 𝑤₀ and 𝑤₁ (OR 𝑤₀, 𝑤₁, 𝑤₂ ...) such that the resultant probabilities are closest to either `0` or `1`.
+In other words, for a binary classification [0, 1], the maximum likelihood would try to find the values of coefficients 𝑤₀ and 𝑤₁ (OR 𝑤₀, 𝑤₁, 𝑤₂ ...) such that the resultant probabilities are closest to either `0` or `1`.
+
 
 - __Bernoulli Distribution__
 
-Because we are discussing about the discrete variables, at this point it"s worth  discussing about the __Bernoulli Distribution__ regarding the discrete random probability. `Bernoulli Distribution` is the probability distribution of a random variable taking on only two values as below
+Because we are discussing about the discrete variables and probability, at this point it"s worth  discussing about the __Bernoulli Distribution__ regarding the discrete random probability. `Bernoulli Distribution` is the probability distribution of a random variable taking on only two values as below
 
 - `1` (`success` or `true`) and
 - `0` (`failure` or `false`)
 
-with complementary probabilities `p` and `q` respectively.
+with complementary probabilities `𝑝` and `𝑞` respectively.
 
-Where `p` and `q` are related to each other as `p + q = 1` or `q = 1 - p`.
+Where `𝑝` and `𝑞` are related to each other as `𝑝 + 𝑞 = 1` or `𝑞 = 1 - 𝑝`.
 
 > Any random variable whose only two possible values are `0` and `1` is called a `Bernoulli random variable`.
 
 Mathematically,  `Bernoulli Distribution` is the probability distribution of random variable *X* having the `probability mass function` defined as below:
 
-- If a random variable __X__ takes two values `0` and `1`, with probabilities `p` and `1 - p`. Then its `Probability Mass function` is depicted as below:
+- If a random variable __X__ takes two values `0` and `1`, with probabilities `𝑝` and `1 - 𝑝`, then its `Probability Mass function` is depicted as below:
 
 ![e13]
 
-Also, from the sigmoid function plot we can interpret that it's similar to the following:
+Also, from the plot of the sigmoid function, we can interpret that it's similar to the following:
 
 ![p2]
 
@@ -270,13 +271,11 @@ where `ŷ` is the predicted probability converted to a binary outcome via a thre
 ![e14]
 
 
-#### finding the coefficients
+#### Finding the coefficients
 
-As discussed earlier, the goal here is to find the coefficient(s) `𝑤` for the best fitting model which best explains the training data set, by using the `Maximum Likelihood Estimator` under a set of assumptions. Let us endow our classification model with a set of probabilistic assumptions and then fit the parameters via *maximum likelihood*.
+As discussed earlier, the goal of logistic regression is to find the coefficient(s) `𝑤` for the best fitting model which best explains the training data set, by using the `Maximum Likelihood Estimator` under a set of assumptions. Let us endow our classification model with those set of probabilistic assumptions and then fit the parameters via *maximum likelihood*.
 
 _Below are the probabilistic assumptions we considered:_
-
-*__Note__: These assumptions follow the `Bernoulli distribution` discussed earlier*
 
 - Assumption 1
 
@@ -290,9 +289,9 @@ _Below are the probabilistic assumptions we considered:_
 
 ![e12]
 
-The `Maximum Likelihood equation` is derived from the probability distribution of the independent variable (`𝑥`) and dependent variable ('𝑦').
+> *__Note__: These assumptions follow the `Bernoulli distribution` discussed earlier*
 
-With these, we can express the assumptions made earlier in a more compact form as under:
+The `Maximum Likelihood equation` is derived from the probability distribution of the independent variable (`𝑥`) and dependent variable ('𝑦'). So, based on the fact that we are considering independent variables, we may express the assumptions made earlier in a more compact form as under:
 
 ![e15]
 
@@ -308,12 +307,12 @@ Assuming that __n__ training samples were generated independently, the likelihoo
 ![alt_text](images/likelihood_codecogs.gif "maximum likelihood")
 
 
-In the above derivation, we arrived at the final simplified version in terms of `ϕ(𝑧)` because of the relation or identity, ![p4]
+In the above derivation, we arrived at the final simplified version of likelihood in terms of `ϕ(𝑧)` because of the relation or identity, ![p4]
 
 
 In mathematics, the `Negative Log Likelihood` function is also known as `Error Function` or `Cost Function`.
 
-Once we have an __Error or Cost function__ in our hand, we can apply an optimization algorithm such as __gradient descent__ to __minimize__ the cost function; otherwise, we may apply __gradient ascent__ to maximize the log-likelihood function.
+Once we have an __Error or Cost function__ in our hand, we can apply an optimization algorithm such as __gradient descent__ to __minimize__ the cost function; alternatively, we may apply __gradient ascent__ to maximize the log-likelihood function.
 
 With that, the __Cost or Error function__ may be represented as under:
 
