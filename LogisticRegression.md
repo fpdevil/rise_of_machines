@@ -325,7 +325,7 @@ In order to get a clear understanding of the `cost function` defined above, let 
 
 ![alt_text](images/single_sample.gif "single-sample training instance")
 
-### The next section illustrates the cost of classifying this single-sample training instance for different values of _g(z)_ using python
+### The next section illustrates the cost of classifying this single-sample training instance for different values of __ϕ(𝑧)__ using python
 
 Here is a plot of __ϕ(𝑧)__ against the cost function __J(w)__ using python, which shows the _sigmoid_ activation on the __x-axis__ within range `0` through `1` and the associated logistic cost over __y-axis__. The input values to `sigmoid`, _z_ is in the range of [-10, 10].
 
@@ -363,11 +363,7 @@ plt.show()
 ![cost of classifying single sample instance](images/single_classifier.png
 "cost of a single sample classifier")
 
-From the above figure it can be inferred that the cost reaches `0` if the
-prediction is correct for the sample belonging to either `class 1` or `class
-0`; but if the prediction is wrong, then the cost shoots up towards __infinity__
-on both cases, which indicates that the wrong predictions are penalized with
-an increasingly larger cost.
+From the above figure it can be inferred that the cost reaches `0` if the prediction is correct for the sample belonging to either `class 1` or `class 0`; but if the prediction is wrong, then the cost shoots up towards __infinity__ on both cases, which indicates that the wrong predictions are penalized with an increasingly larger cost.
 
 ## Evaluation metrics in Logistic Regression
 
