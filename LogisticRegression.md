@@ -324,6 +324,13 @@ In order to get a clear understanding of the `cost function` defined above, let 
 
 ![alt_text](images/single_sample.gif "single-sample training instance")
 
+
+Additionally, we can observe that for `y = 1`,
+
+> - As φ(z) → 1, J(y | x; w) → 0
+> - As φ(z) → 0, J(y | x; w) → ∞
+
+
 ### The next section illustrates the cost of classifying this single-sample training instance for different values of __ϕ(𝑧)__ using python
 
 Here is a plot of __ϕ(𝑧)__ against the cost function __J(w)__ using python, which shows the _sigmoid_ activation on the __x-axis__ within range `0` through `1` and the associated logistic cost over __y-axis__. The input values to `sigmoid`, _z_ is in the range of [-10, 10].
@@ -363,6 +370,32 @@ plt.show()
 "cost of a single sample classifier")
 
 From the above figure it can be inferred that the cost reaches `0` if the prediction is correct for the sample belonging to either `class 1` or `class 0`; but if the prediction is wrong, then the cost shoots up towards __infinity__ on both cases, which indicates that the wrong predictions are penalized with an increasingly larger cost.
+
+
+### Maximizing the log-likelihood
+
+We maximize the log-likelihood using gradient ascent. With that the weight's will be updated using:
+
+`𝑤 := 𝑤 + η𝞩l(𝑤)`
+
+For maximizing and getting the `𝞩l(w)`, we need to differentiate the likelihood function as under:
+
+
+![differentiating the log-likelihood function](images/maximize_likelihood.png "Maximize log-likelihood")
+
+With the final goal being finding the weights which would maximize the log-likelihood, the individual weights may be updated as below:
+
+![weight_updates](images/weight_updates.gif "updating the weights for max log-likelihood")
+
+
+Because all the weights are updated simultaneously, we may write the general update rule as `𝑤 := 𝑤 + Δ𝑤`, with __Δ𝑤__ defined as follows:
+
+`Δ𝑤 = η∇l(𝑤)`
+
+Since maximizing the log-likelihood is the same as minimizing the cost function `𝐽`, defined earlier we ca write the gradient descent update rule as follows:
+
+![simultaneous_weight_updates](images/simultaneous_updates.gif "simulataneous weight updates")
+
 
 ## Evaluation metrics in Logistic Regression
 
