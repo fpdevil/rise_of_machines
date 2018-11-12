@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
+# Contains common methods frequently used across....
+# The example reference at the below matplotlib is helpful in choosing an
+# appropriate colormap for the output plot
+# https://matplotlib.org/examples/color/colormaps_reference.html
+
 # import the necessary packages
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,7 +15,8 @@ def create_meshgrid(x, y, margin=1, step=0.02):
     """Create a numoy rectangular meshgrid out of an array of
     x values and an array of y values
 
-    @ref https://stackoverflow.com/questions/36013063/what-is-the-purpose-of-meshgrid-in-python-numpy
+    @ref https://stackoverflow.com/questions/36013063
+                 /what-is-the-purpose-of-meshgrid-in-python-numpy
 
     :x: array-like point x
     :y: array-like point y
@@ -56,7 +62,7 @@ def draw_decision_boundary(x,
     cmap: color map
     """
     # set-up the marker generator and color map for plotting
-    markers = ('s', 'o', 'x', '*', 'v')
+    markers = ('s', 'o', 'x', '^', 'v')
 
     # for data, first set-up a grid for plotting.
     X0, X1 = x[:, 0], x[:, 1]
@@ -97,12 +103,12 @@ def plot_classifier(X,
     x: {array-like}, shape = [n_samples, n_features]
     y: array-like, shape = [n_samples]
     margin: margin for the min and max
-    step: float
+    step_size: float
     This is spacing between values. For any output out, this is the distance
     between two adjacent values, out[i+1] - out[i]
     alpha: float
     blending value to decide transparency - 0 (transparent) and 1 (opaque)
-    test_idx:
+    test_idx: list
     cmap: object
     color map for the output colors of objects
     """
