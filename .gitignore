@@ -100,6 +100,9 @@ target/
 # mpeltonen/sbt-idea plugin
 .idea_modules/
 
+# neglect mypy cache
+.mypy_cache/
+
 # JIRA plugin
 atlassian-ide-plugin.xml
 

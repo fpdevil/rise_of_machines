@@ -21,11 +21,10 @@ import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 
-from sklearn import datasets
-from sklearn import model_selection
-from sklearn import linear_model
-from sklearn.preprocessing import StandardScaler
 from helpers import plot_classifier
+
+from sklearn import datasets, linear_model, metrics, model_selection
+from sklearn.preprocessing import StandardScaler
 
 ap = argparse.ArgumentParser()
 ap.add_argument(
@@ -205,6 +204,11 @@ if args["trainer"] == 'sklearn':
         format(pp))
     print("predicted class labels of the above samples: {}".format(
         pp.argmax(axis=1)))
+
+    # predict class labels for samples in X_test
+    y_predicted = logreg.predict(X_test_std)
+    print('Prediction: {}'.format(y_predicted))
+    print('Accuracy Score: {}'.format(metrics.accuracy_score(y_test, y_predicted)))
 else:
     print('\n## using the {} LogisticRegressionGD ##'.format(args["trainer"]))
     print('## to use scikit-learn model, supply args --trainer sklearn ##')
