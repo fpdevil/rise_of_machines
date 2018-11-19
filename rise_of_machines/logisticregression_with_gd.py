@@ -172,15 +172,18 @@ if args["trainer"] == 'sklearn':
     print('\n## using {} implementation of Logistic Regression ##'.format(
         args["trainer"]))
 
-    # data standardization
+    # data scaling / standardization
     scaler = StandardScaler()
     # compute the mean and std to be used for later scaling
     scaler.fit(X_train)
     # perform standardization by centering and scaling
     X_train_std = scaler.transform(X_train)
     X_test_std = scaler.transform(X_test)
-    # compute the mean value
-    print('Mean of the training data: ', scaler.mean_)
+    # confirm that the scaled or standardized dataset is indeed
+    # cenetered at zero, with unit variance.
+    print('\n# checking scaled training dataset for unit variance #')
+    print('mean cenetered at 0: ', X_train_std.mean(axis=0))
+    print('std cenetered at 0: ', X_train_std.std(axis=0))
     X_combined_std = np.vstack((X_train_std, X_test_std))
     y_combined = np.hstack((y_train, y_test))
 
