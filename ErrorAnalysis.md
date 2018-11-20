@@ -63,12 +63,13 @@ Often it's represented with an excessively smooth curve passing through the data
 
 - Symptoms
 
-| Overfitting | Underfitting |
-| :---        | :---         |
-| - [x] *Low Bias* | - [x] *High Bias* |
-| Accurate prediction for training set | Poor prediction for training set |
-| - [x] *High Variance* | - [x] *Low Variance* |
-| Poor ability to generate predictions for validation set | Poor predictions for validatio set |
+Overfitting | Underfitting
+:--- | :--- |
+`Low Bias` | `High Bias`
+Accurate predictions over training data set  | Poor predictions over training data set
+`High Variance` | `Low Variance`
+Poor ability to generate predictions for the validation data set | Poor predictions for the validation data set
+
 
 ### An example on Overfitting
 
