@@ -61,6 +61,15 @@ Often it's represented with an excessively smooth curve passing through the data
     - If after analyzing the training and validation loss, it has been observed that both are high, then it's an indication that the model is `underfitting`.
     In order to prevent underfitting, we may use a larger model. In case of a neural network model, we can try to increase the number of hidden neurons or try putting in more hidden layers. These will increase the number of parameters of the model and prevent underfitting.
 
+- Symptoms
+
+| Overfitting | Underfitting |
+| :---        | :---         |
+| [x]*Low Bias* | [x]*High Bias* |
+| Accurate prediction for training set | Poor prediction for training set |
+| [x]*High Variance* | [x]*Low Variance* |
+| Poor ability to generate predictions for validation set | Poor predictions for validatio set |
+
 ### An example on Overfitting
 
 Assume for instance that we are working on a model to predict Earthquake occurrence from a data set consisting of the frequencies of earthquakes occurred in the past and their effects.
@@ -107,6 +116,7 @@ __High Bias is equivalent to aiming at the wrong place, while High Variance is e
 Here is an illustration of the Bias vs Variance using the analogy of archery.
 
 ![bias vs variance](images/bias-variance.png "Bias vs Variance")
+
 
 ### Bias versus Variance trade-off
 
