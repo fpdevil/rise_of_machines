@@ -32,25 +32,52 @@ It's a very common case in machine learning, neural and deep learning systems. O
 
 Overfitting may also be attributed to size of the model, where the problem is huge and considerable number of parameters are involved in the prediction algorithm. Usually if the number of parameters are mode, it will increase the accuracy of the model. Using an `(N - 1)` degree of polynomial, we can perfectly cover `N` number of points.
 
-### Understanding *Overfitting* and *Underfitting* with simple examples
+### *Overfitting* and *Underfitting* continued
+
+- __Overfitting__
+
+As stated earlier, `overfitting` is a phenomenon which occurs when a model learns the detail(s) and noise in the training data to such an extent that it negatively impacts the performance of the model on new data. It happens when the model is very good at learning its training set, but cannot generalize beyond the training set (known as the generalization problem).
+
+- *Detecting `overfitting`*
+
+  - Ways to detect overfitting. 
+
+    - If the error (or loss) for the training data as well as the error for the validation data are plotted and it has been observed that the training loss is very small, but the validation loss is high, then it's an indication of `overfitting`. This indicates that the model is really performing well over the training data, but is failing to generalize.
+
+    - If the training set accuracy is very high for the model and the test set accuracy is very low, then again it's an indication of `overfitting`, as the model is not generalizing well.
+
+- __Underfitting__
+
+`Underfitting` is the inverse or reciprocal of `Overfitting`. This is not so much a common problem in machine learning as overfitting, but it does help in the model selection. It happens when the model is not able to generate accurate predictions on the training set (or validation set).
+
+While trying to reduce overfitting, we might actually begin to head to the other extreme and our model can start to ignore important features of our data set. This happens when we choose a model that is not complex enough to capture these important features, such as using a linear model when a quadratic is necessary.
+
+Often it's represented with an excessively smooth curve passing through the data points as can be seen from the extreme left of the picture depicting the curves. In the figure, the line is linear even though the underlying data is not linear. This kind of extreme generalization can also lead to poor accuracy.
+
+- *Detecting `underfitting`*
+
+  - Ways to detect underfitting.
+
+    - If after analyzing the training and validation loss, it has been observed that both are high, then it's an indication that the model is `underfitting`.
+    In order to prevent underfitting, we may use a larger model. In case of a neural network model, we can try to increase the number of hidden neurons or try putting in more hidden layers. These will increase the number of parameters of the model and prevent underfitting.
+
+### An example on Overfitting
 
 Assume for instance that we are working on a model to predict Earthquake occurrence from a data set consisting of the frequencies of earthquakes occurred in the past and their effects.
 
-Next, we check the model out in the real world to get a prediction on the probability of a very strong earthquake from the real-time seismic frequencies. If the model is able to predict with `99%` accuracy, then it's just a **WoW** factor.
+Next, we check the model out in the real world to get a prediction on the probability of a very strong earthquake from the real-time seismic frequencies. If the model is able to predict with `99%` accuracy, then it's just a *WoW* factor.
 
 But what if it happens that the model's prediction is under `50%`? This is a clear indication that the model worked well on the training data, but failed to perform well over the unseen data; __A clear case of Overfitting__.
 
-That's a terrible disaster if such a critical model fails in the real world. In fact the above example is a real case of devastating effect of overfitting which happened in the case of **Fukushima Power Plant**. The safety plan for __Fukushima nuclear power plant__ was designed using historical data of the past 400 years. The engineers designed the plant to withstand an earthquake of intensity `8.6` on **Richter** scale and a Tsunami as high as 5.7 meters. The threshold numbers quoted were finalized using predictive modeling by analyzing the earthquake data (intensity and annual frequency) of past 400 years and a prediction model was built using the same to help predict the future earthquakes.
+That's a terrible disaster if such a critical model fails in the real world. In fact the above example is a real case of devastating effect of overfitting which happened in the case of **Fukushima Power Plant**. The safety plan for _Fukushima Daiichi Nuclear Power Plant_ was designed using historical data of the past 400 years. The engineers designed the plant to withstand an earthquake of intensity `8.6` on **Richter** scale and a Tsunami as high as `5.7` meters. The threshold numbers quoted were finalized using predictive modeling by analyzing the earthquake data (intensity and annual frequency) of the past 400 years and a prediction model was built using the same in order to help predict the future earthquakes.
 
-The standard method of determining earthquake is by using [Gutenburg-Richter model](https://en.wikipedia.org/wiki/Gutenberg%E2%80%93Richter_law) which fits the data on a straight line (using linear regression). The model showed that an earthquake of intensity `9.0` is likely in `150` years.
+The standard method of determining earthquake is by using [Gutenburg-Richter model](https://en.wikipedia.org/wiki/Gutenberg%E2%80%93Richter_law) which fits the data on a straight line (using linear regression). The model showed that an earthquake of intensity `9.0` is likely to occur in `150` years.
 
-However, during the design of __Fukushima power plant__, the engineers and scientists used a **curve** instead of a **straight line** as their prediction model. With this model, an earthquake of intensity `9.0` was `70` times less likely. On __March 11, 2011__, the `Fukushima power plant` was hit by an earthquake of intensity 9.1 and tsunami of height __greater than `14` meters__ resulting in one of the biggest nuclear disasters ever.
+However, during the design of the _Fukushima Daiichi Power Plant_, the engineers and scientists used a **curve** instead of a **straight line** as their prediction model. With this model, an earthquake of intensity `9.0` was `70` times less likely to occur. But on __March 11, 2011__, the `Fukushima power plant` was hit by an earthquake of intensity `9.1` and a tsunami of height __greater than `14` meters__ resulting in one of the biggest nuclear disasters ever.
 
-The whole episode was the result of improper understanding of __**Overfitting** or **High Variance**__ problem in supervised machine learning.
+The whole episode was the result of improper understanding of _**Overfitting** or **High Variance**_ problem in supervised machine learning.
 
-Much of the information quoted about the *Fukushima Daiichi Power Plant* was taken from the brilliant paper [Fukushima: The Failure of Predictive Models](https://mpra.ub.uni-muenchen.de/69383/1/MPRA_paper_69383.pdf)
-
-By - <cite>Brian Stacey</cite>
+Much of the information quoted here, about the *Fukushima Daiichi Nuclear Power Plant* was taken from the brilliant paper [Fukushima: The Failure of Predictive Models](https://mpra.ub.uni-muenchen.de/69383/1/MPRA_paper_69383.pdf) - <cite>Brian Stacey</cite>
 
 ## Bias versus Variance
 
@@ -85,10 +112,24 @@ Here is an illustration of the Bias vs Variance using the analogy of archery.
 
 Every model has both bias and variance error components along with some noise. **Bias** and **Variance** are inversely related to each other, while trying to reduce one component, the other component of the model will increase. One needs to balance both in order to create a good fit. The ideal model will have both __low bias__ and __low variance__.
 
+Often it happens that in order to avoid overfitting, we may start running into underfitting, ignoring the important features in training data. So, a right balance between the two is much needed which is the same as balance between bias and variance.
+
+The problem of balancing both Bias and Variance is what is called as Bias-Variance trade-off or dilemna. Both bias and variance are just the side effects of the complexity of our model. In case of high bias, our model was too simple and in case of high variance our model was too complex. So, complexity is what is the factor bridging both.
+
+![Bias-Variance-TradeOff](images/bias-variance-tradeoff.png "Bias Vs Variance Dilemna")
+
+The above image clear why there is a trade-off between bias and variance. Whenever a simple model (low complexity) is chosen, we are also choosing a model with high bias. If we try to increase the complexity of the model, we are sacrificing low variance in exchange for low bias at the cost of high variance. The best thing which can be done is to settle somewhere in between the two in order to balance both.
+
+## Regularization
+
+_Regularization_ is a technique which is used to solve the overfitting problem of the machine learning models.
+
+
 ## References
 
-[Fukushima disaster was preventable, new study finds][L1]
-[Fukushima: The Failure of Predictive Models][L2]
+- [Fukushima disaster was preventable, new study finds][L1]
+
+- [Fukushima: The Failure of Predictive Models][L2]
 
 
 [L1]: <https://news.usc.edu/86362/fukushima-disaster-was-preventable-new-study-finds/>
