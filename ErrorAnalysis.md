@@ -40,7 +40,7 @@ As stated earlier, `overfitting` is a phenomenon which occurs when a model learn
 
 - *Detecting `overfitting`*
 
-  - Ways to detect overfitting. 
+  - Ways to detect overfitting.
 
     - If the error (or loss) for the training data as well as the error for the validation data are plotted and it has been observed that the training loss is very small, but the validation loss is high, then it's an indication of `overfitting`. This indicates that the model is really performing well over the training data, but is failing to generalize.
 
@@ -83,7 +83,7 @@ Much of the information quoted here, about the *Fukushima Daiichi Nuclear Power 
 
 There are two common categories of error(s) in the world of machine intelligence, the training error and the validation error. These two can come up from the data set distributed as training and validation(test) data set(s).
 
-Training error is the difference between the known correct output for the inputs and the actual output of the prediction model. During the course of training the training error is reduced until the model produces an accurate (or a near accurate) prediction for the training set. 
+Training error is the difference between the known correct output for the inputs and the actual output of the prediction model. During the course of training the training error is reduced until the model produces an accurate (or a near accurate) prediction for the training set.
 
 Validation error is the difference between the known correct output for the validation set and the actual output of the prediction model.
 
@@ -106,7 +106,7 @@ __High Bias is equivalent to aiming at the wrong place, while High Variance is e
 
 Here is an illustration of the Bias vs Variance using the analogy of archery.
 
-![bias variance tradeoff](images/bias-variance.png "The Bias Variance trade-off")
+![bias vs variance](images/bias-variance.png "Bias vs Variance")
 
 ### Bias versus Variance trade-off
 
@@ -116,7 +116,7 @@ Often it happens that in order to avoid overfitting, we may start running into u
 
 The problem of balancing both Bias and Variance is what is called as Bias-Variance trade-off or dilemna. Both bias and variance are just the side effects of the complexity of our model. In case of high bias, our model was too simple and in case of high variance our model was too complex. So, complexity is what is the factor bridging both.
 
-![Bias-Variance-TradeOff](images/bias-variance-tradeoff.png "Bias Vs Variance Dilemna")
+![bias variance tradeOff](images/bias-variance-tradeoff.png "Bias Vs Variance Dilemna")
 
 The above image clear why there is a trade-off between bias and variance. Whenever a simple model (low complexity) is chosen, we are also choosing a model with high bias. If we try to increase the complexity of the model, we are sacrificing low variance in exchange for low bias at the cost of high variance. The best thing which can be done is to settle somewhere in between the two in order to balance both.
 
