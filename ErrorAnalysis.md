@@ -1,10 +1,24 @@
 # Error Analysis in Machine Learning
 
+## Training and Validation (Test) data
+
+Before applying a machine learning algorithm, it's a practice to usually split the data randomly into training and test or validation datasets in the ratio of `70 : 30` or `80 : 20`. The training data will be utilized for building the model and it's effectiveness will be checked over the test or validation data.
+
+![Modelling Methodology](images/data-split.png "Data split into training and validation")
+
+There are two common categories of error(s) in the world of machine intelligence, the training error and the validation error. These two can come up from the data set distributed as training and validation(test) data set(s).
+
+Training error is the difference between the known correct output for the inputs and the actual output of the prediction model. During the course of training the training error is reduced until the model produces an accurate (or a near accurate) prediction for the training set.
+
+Validation error is the difference between the known correct output for the validation set and the actual output of the prediction model.
+
 ## Optimization and Generalization
 
 One of the fundamental issue in machine learning is the balance between optimization and generalization. *Optimization* refers to the process of adjusting a model to get the best performance possible on the training data, while *Generalization* refers to how well the trained model performs on data it has never seen before. The ultimate goal of a learning system is to come up with a good generalization.
 
 While training a model at first, the optimization and generalization are correlated; i.e., the lower the loss on training data, the lower the loss on the test data. As the process continues, the model is said to be __underfit__ meaning there is still progress to be made and the model has not yet learned all relevant patterns in the training data. But, after certain number of iterations over the training data, `generalization` stops improving and validation metrics gets halted and then begin to degrade, which means the model is starting to __overfit__ indicating that it's starting to learn patterns which are specific to the training data but which are misleading or irrelevant when it comes to new data.
+
+
 
 ## Overfitting and Underfitting
 
@@ -30,7 +44,7 @@ Consider plotting a best fitting curve given a set of points. One might think th
 
 It's a very common case in machine learning, neural and deep learning systems. Overfitting happens when our model tries so hard to correctly classify each and every sample, that it ends up modeling of all of these tiny noises and intricacies for each input; and when we give it a new data it hasn't seen during training, the model does not know what to do! In other words, we may say the model generalizes poorly. Ideally we would like our model to generalize to new and unseen data. So, if it overfits the accuracy is compromised on new data.
 
-Overfitting may also be attributed to size of the model, where the problem is huge and considerable number of parameters are involved in the prediction algorithm. Usually if the number of parameters are mode, it will increase the accuracy of the model. Using an `(N - 1)` degree of polynomial, we can perfectly cover `N` number of points.
+Overfitting may also be attributed to size of the model, where the problem is huge and considerable number of parameters are involved in the prediction algorithm. Usually if the number of parameters are more, it will increase the accuracy of the model. Using an `(N - 1)` degree of polynomial, we can perfectly cover `N` number of points.
 
 ### *Overfitting* and *Underfitting* continued
 
@@ -91,11 +105,6 @@ Much of the information quoted here, about the *Fukushima Daiichi Nuclear Power 
 
 ## Bias versus Variance
 
-There are two common categories of error(s) in the world of machine intelligence, the training error and the validation error. These two can come up from the data set distributed as training and validation(test) data set(s).
-
-Training error is the difference between the known correct output for the inputs and the actual output of the prediction model. During the course of training the training error is reduced until the model produces an accurate (or a near accurate) prediction for the training set.
-
-Validation error is the difference between the known correct output for the validation set and the actual output of the prediction model.
 
 The errors in the prediction can be decomposed into two main sub-components:
 
@@ -129,11 +138,21 @@ The problem of balancing both Bias and Variance is what is called as Bias-Varian
 
 ![bias variance tradeOff](images/bias-variance-tradeoff.png "Bias Vs Variance Dilemna")
 
-The above image clear why there is a trade-off between bias and variance. Whenever a simple model (low complexity) is chosen, we are also choosing a model with high bias. If we try to increase the complexity of the model, we are sacrificing low variance in exchange for low bias at the cost of high variance. The best thing which can be done is to settle somewhere in between the two in order to balance both.
+The above image makes it clear as to why there is a trade-off between bias and variance. Whenever a simple model (low complexity) is chosen, we are also choosing a model with high bias. If we try to increase the complexity of the model, we are sacrificing low variance in exchange for low bias at the cost of high variance. The best thing which can be done is to settle somewhere in between the two in order to balance both.
 
 ## Regularization
 
-_Regularization_ is a technique which is used to solve the overfitting problem of the machine learning models.
+_Regularization_ is a technique which is used to solve the overfitting problem of the machine learning models. Generally, a good model does not give more weight to a particular feature. The weights are evenly distributed, which can be achieved using `Regularization`. Essentially regularization reduces the variance by injecting `bias` into the model and telling it not to become too complex.
+
+There are two types of common regularization techniques as follows:
+
+* L1 Regularization or Lasso Regularization
+* L2 Regularization or Ridge Regularization
+
+Apart from the above, we have the below for other learning models.
+
+* Dropout for Neural Network(s)
+* Soft Margin for SVM(s)
 
 
 ## References
