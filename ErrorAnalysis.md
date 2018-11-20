@@ -65,9 +65,9 @@ Often it's represented with an excessively smooth curve passing through the data
 
 | Overfitting | Underfitting |
 | :---        | :---         |
-| [x]*Low Bias* | [x]*High Bias* |
+| - [x] *Low Bias* | - [x] *High Bias* |
 | Accurate prediction for training set | Poor prediction for training set |
-| [x]*High Variance* | [x]*Low Variance* |
+| - [x] *High Variance* | - [x] *Low Variance* |
 | Poor ability to generate predictions for validation set | Poor predictions for validatio set |
 
 ### An example on Overfitting
