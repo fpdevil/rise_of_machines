@@ -6,9 +6,13 @@ Before applying a machine learning algorithm, it's a practice to usually split t
 
 ![Modelling Methodology](images/data-split.png "Data split into training and validation")
 
-There are two common categories of error(s) in the world of machine intelligence, the training error and the validation error. These two can come up from the data set distributed as training and validation(test) data set(s).
+There are two common categories of error(s) in the world of machine intelligence, the training error and the validation error. These two can come up from the data set distributed as training and validation(test) data set(s) as shown in the figure above.
+
+- Training error
 
 Training error is the difference between the known correct output for the inputs and the actual output of the prediction model. During the course of training the training error is reduced until the model produces an accurate (or a near accurate) prediction for the training set.
+
+- Validation error
 
 Validation error is the difference between the known correct output for the validation set and the actual output of the prediction model.
 
@@ -105,13 +109,12 @@ Much of the information quoted here, about the *Fukushima Daiichi Nuclear Power 
 
 ## Bias versus Variance
 
-
-The errors in the prediction can be decomposed into two main sub-components:
+Errors in model prediction can be decomposed into the following two main sub-components:
 
 - Error due to __Bias__
 - Error due to __Variance__
 
-Bias and Variance are two statistical concepts which are important for almost all types of machine learning algorithms
+Bias and Variance are two statistical concepts which are important for almost all types of machine learning algorithms. Here is how each of them can be described:
 
 - Bias:
 
@@ -142,7 +145,14 @@ The above image makes it clear as to why there is a trade-off between bias and v
 
 ## Regularization
 
-_Regularization_ is a technique which is used to solve the overfitting problem of the machine learning models. Generally, a good model does not give more weight to a particular feature. The weights are evenly distributed, which can be achieved using `Regularization`. Essentially regularization reduces the variance by injecting `bias` into the model and telling it not to become too complex.
+One of the main problems in machine learning is how to make an algorithm to perform well not only on the training data, but also equally well on newer inputs and test data.There are many strategies designed to counter the test error, possibly by increasing the training error. Such strategies are collectively called as *Regularization*. The goal of _regularization_ is to train models which generalize well on unseen data by preventing the algorithm from overfitting the training dataset.
+
+Below is an excerpt from the book (Deep Learning)[http://www.deeplearningbook.org/]
+
+> Regularization is any modification we make to a learning algorithm that is intended to reduce its generalization error but not its training error.
+
+
+Generally, a good model does not give more weight to any particular feature and the weights are evenly distributed, which can be achieved using `Regularization`. Essentially regularization reduces the variance by injecting `bias` into the model and telling it not to become too complex.
 
 There are two types of common regularization techniques as follows:
 
@@ -154,6 +164,11 @@ Apart from the above, we have the below for other learning models.
 * Dropout for Neural Network(s)
 * Soft Margin for SVM(s)
 
+The core concept behind regularization is to penalize the extreme parameter values (weights) by introducing `bias`, there by reducing the `variance`.
+
+- L1 or Lasso regularization penalizes the error function, by adding a penalty in the form of _sum of absolute values of weights_ as shown below.
+
+
 
 ## References
 
@@ -161,6 +176,9 @@ Apart from the above, we have the below for other learning models.
 
 - [Fukushima: The Failure of Predictive Models][L2]
 
+- [Deep Learning - Ian Goodfellow and Yoshua Bengio and Aaron Courville][L3]
+
 
 [L1]: <https://news.usc.edu/86362/fukushima-disaster-was-preventable-new-study-finds/>
 [L2]: <https://mpra.ub.uni-muenchen.de/69383/1/MPRA_paper_69383.pdf>
+[L3]: <http://www.deeplearningbook.org/>
