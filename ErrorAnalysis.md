@@ -181,6 +181,36 @@ Here `λ` is called as the regularization parameter. If λ is `0`, then we will 
 
 Lasso shrinks the lesser important feature coefficients to zero thus, removing some features altogether. So, this works well for feature selection where a very high number of features are available.
 
+- L2 or Ridge Regression
+
+Ridge regression adds _squared magnitude_ of coefficient as penalty term to the loss function.
+
+Here is the cost function for Linear regression.
+
+![ridge_regression_linear](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cfn_phv%20%7B%5Ccolor%7BTeal%7D%20J%28w%29%20%3D%20%5Csum_%7Bj%3D1%7D%5E%7Bn%7D%28y%5E%7B%28i%29%7D%20-%20w_jx%5E%7B%28i%29%7D_j%29%5E2%20&plus;%20%5Cfrac%7B%5Clambda%7D%7B2%7D%5Csum_%7Bj%3D1%7D%5E%7Bn%7D%5Cleft%20%7C%20%28w_j%29%5E2%20%5Cright%20%7C%7D)
+
+Here is the cost function for Logistic regression.
+
+![ridge_regression_logistic](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cfn_phv%20%7B%5Ccolor%7BDarkOrange%7D%20J%28w%29%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cleft%20%5B%20-y%5E%7B%28i%29%7Dlog%28%5Cphi%28z%5E%7B%28i%29%7D%29%29%20-%20%281%20-%20y%29log%281%20-%20%5Cphi%28z%5E%7B%28i%29%7D%29%29%20%5Cright%20%5D%20&plus;%20%5Cfrac%7B%5Clambda%7D%7B2%7D%5Csum_%7Bj%3D1%7D%5E%7Bn%7D%5Cleft%20%7C%20%28w_j%29%5E2%20%5Cright%20%7C%7D)
+
+The regularization parameter `λ` is the key to control how well we fit the training data while keeping the weights small. The regularization strength may be increased with the increase of `λ`.
+
+
+### Which regularization to consider?
+
+From the above discussion, it's clear that `Lasso` takes the sum of absolute value of coefficients and `Ridge` takes sum of square of coefficients.
+
+Both of them serve the same purpose of preventing overfitting by penalizing the model's complexity there by reducing the variance and increasing the bias.
+
+By reducing the sum of absolute values of the coefficients, Lasso regularization or L1 Norm reduces the number of features to predict the target variable.
+
+On the other end, by reducing the sum of squares of the coefficients, Ridge regression or L2 Norm reduces the magnitude or impact of each feature on the model there by reducing the coefficient value. It does not necessarily reduce the number of features.
+
+So, in essence both does the same thing of preventing overfitting, but Lasso Regression works by reducing the quantity of features while Ridge Regression works by reducing the quality of features. Both types of reductions are necessary and therefore it makes much sense to use a combination of both Lasso and Ridge regression(s) which is coined as Elastic Net, which is an ideal type of regularization to be performed on a model.
+
+Elastic Net essentially penalizes the size of regression coefficients based on both their L1 Norm and their L2 Norm.
+
+
 ## References
 
 - [Fukushima disaster was preventable, new study finds][L1]
