@@ -212,7 +212,7 @@ On the other end, by reducing the sum of squares of the coefficients, Ridge regr
 
 So, in essence both does the same thing of preventing overfitting, but Lasso Regression works by reducing the quantity of features while Ridge Regression works by reducing the quality of features.
 
-In practice, _Ridge_regression is usually the first choice between the two. However, if we have a large number of features and expect only a few of them to be important, then _Lasso_regression might be a better choice. Similarly, if we would like to have a model which is easier to interpret, _Lasso_ will provide a model that is easier to understand as it will select only a subset of the input features.
+In practice, _Ridge_ regression is usually the first choice between the two. However, if we have a large number of features and expect only a few of them to be important, then _Lasso_ regression might be a better choice. Similarly, if we would like to have a model which is easier to interpret, _Lasso_ will provide a model that is easier to understand as it will select only a subset of the input features.
 
 In certain cases, both types of reductions seem to be necessary providing an optimum model and therefore it makes much sense to use a combination of both Lasso and Ridge regression(s) which is coined as Elastic Net, which is an ideal type of regularization to be performed on a model.
 
