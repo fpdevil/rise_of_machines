@@ -147,6 +147,10 @@ The above image makes it clear as to why there is a trade-off between bias and v
 
 One of the main problems in machine learning is how to make an algorithm to perform well not only on the training data, but also equally well on newer inputs and test data.There are many strategies designed to counter the test error, possibly by increasing the training error. Such strategies are collectively called as *Regularization*. The goal of _regularization_ is to train models which generalize well on unseen data by preventing the algorithm from overfitting the training dataset.
 
+So, essentially regularization is a mechanism to locate the optimum model complexity if it's either too simple or overly complex. This may be illustrated using the below figure
+
+![optimum_model_complexity](images/optimum_model_complexity.png "Optimum Model Complexity")
+
 Below is an excerpt from the book (Deep Learning)[http://www.deeplearningbook.org/]
 
 > Regularization is any modification we make to a learning algorithm that is intended to reduce its generalization error but not its training error.
