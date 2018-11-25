@@ -170,20 +170,20 @@ Apart from the above, we have the below for other learning models.
 
 The core concept behind regularization is to penalize the extreme parameter values (weights) by introducing `bias`, there by reducing the `variance`.
 
-- L1 or Lasso regularization penalizes the error function, by adding a penalty in the form of _sum of absolute values of weights_to the cost function. Lasso stands for Least Absolute Shrinkage and Selection Operator.
+- L1 or Lasso regularization penalizes the error function, by adding a penalty in the form of _sum of absolute values of weights_to the cost function. Lasso stands for Least Absolute Shrinkage and Selection Operator. `Lasso` restricts the coefficients to be close to zero.
 
-The cost function in case of Linear Regression is depicted as shown below.
+The cost function in case of Linear Regression using L1 regularization is depicted as shown below.
 
 ![lasso_regularization_linear](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cfn_phv%20%7B%5Ccolor%7BTeal%7D%20J%28w%29%20%3D%20%5Csum_%7Bj%3D1%7D%5E%7Bn%7D%28y%5E%7B%28i%29%7D%20-%20w_jx%5E%7B%28i%29%7D_j%29%5E2%20&plus;%20%5Clambda%5Csum_%7Bj%3D1%7D%5E%7Bn%7D%5Cleft%20%7C%20w_j%20%5Cright%20%7C%7D)
 
-and here is the same cost function for Logistic Regression with L2 regularization.
+and here is cost function for Logistic Regression using L1 regularization.
 
 ![lasso_regularization_logistic](https://latex.codecogs.com/gif.latex?%5Cdpi%7B100%7D%20%5Cbg_white%20%5Cfn_phv%20%7B%5Ccolor%7BDarkOrange%7D%20J%28w%29%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%5Cleft%20%5B%20-y%5E%7B%28i%29%7Dlog%28%5Cphi%28z%5E%7B%28i%29%7D%29%29%20-%20%281%20-%20y%29log%281%20-%20%5Cphi%28z%5E%7B%28i%29%7D%29%29%20%5Cright%20%5D%20&plus;%20%5Clambda%5Csum_%7Bj%3D1%7D%5E%7Bn%7D%5Cleft%20%7C%20w_j%20%5Cright%20%7C%7D)
 
 
 Here `λ` is called as the regularization parameter. If λ is `0`, then we will get back the original cost function containing purely Least Squares equation. For higher values of λ, the coefficients will all become zero throwing the model into underfitting.
 
-Lasso shrinks the lesser important feature coefficients to zero thus, removing some features altogether. So, this works well for feature selection where a very high number of features are available.
+The consequence of l1 (_lasso_) regularization is that when using the Lasso, some coefficients are exactly zero, which means some features are entirely ignored or removed by the model. This can be seen as a form of automatic feature selection. Having some coefficients be exactly zero often makes a model easier to interpret, and can reveal the most important features of the model. The model works well for feature selection where a very high number of features are available.
 
 - L2 or Ridge Regression
 
@@ -210,7 +210,11 @@ By reducing the sum of absolute values of the coefficients, Lasso regularization
 
 On the other end, by reducing the sum of squares of the coefficients, Ridge regression or L2 Norm reduces the magnitude or impact of each feature on the model there by reducing the coefficient value. It does not necessarily reduce the number of features.
 
-So, in essence both does the same thing of preventing overfitting, but Lasso Regression works by reducing the quantity of features while Ridge Regression works by reducing the quality of features. Both types of reductions are necessary and therefore it makes much sense to use a combination of both Lasso and Ridge regression(s) which is coined as Elastic Net, which is an ideal type of regularization to be performed on a model.
+So, in essence both does the same thing of preventing overfitting, but Lasso Regression works by reducing the quantity of features while Ridge Regression works by reducing the quality of features.
+
+In practice, _Ridge_regression is usually the first choice between the two. However, if we have a large number of features and expect only a few of them to be important, then _Lasso_regression might be a better choice. Similarly, if we would like to have a model which is easier to interpret, _Lasso_ will provide a model that is easier to understand as it will select only a subset of the input features.
+
+In certain cases, both types of reductions seem to be necessary providing an optimum model and therefore it makes much sense to use a combination of both Lasso and Ridge regression(s) which is coined as Elastic Net, which is an ideal type of regularization to be performed on a model.
 
 Elastic Net essentially penalizes the size of regression coefficients based on both their L1 Norm and their L2 Norm.
 
