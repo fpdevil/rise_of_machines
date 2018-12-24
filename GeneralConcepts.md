@@ -15,7 +15,7 @@ This is the linear regression technique using only one feature.
 
 Let's say we are tasked with the objective of estimating the price of a new 25𝑚² house based on the previous historical data containing the price and area in square meters. If we plot the `price` vs `area` we would get the following similar graph.
 
-!(linear plot)[images/plot.png "linear regression plot"]
+![linear plot](images/plot.png "linear regression plot")
 
 This is a linear plot governed by the equation, `𝑦 = 𝑎x + 𝑏`
 
