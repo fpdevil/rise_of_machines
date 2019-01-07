@@ -218,6 +218,86 @@ In certain cases, both types of reductions seem to be necessary providing an opt
 
 Elastic Net essentially penalizes the size of regression coefficients based on both their L1 Norm and their L2 Norm.
 
+### Tracking the Overfitting through Regularization.
+
+Feature scaling or standardization is quite important from the point of view of _Regularization_. For regularization to work properly, it's an important criteria to ensure that all our features are on coparable scales.
+
+Using the regularization parameter **λ**, we can control how well we fit the training data while keeping the weights small. By increasing the value of **λ**, we increase the regularization strength.
+
+In the _scikit-learn_ implementation of _LogisticRegression_, the parameter `C` is used in place of `λ` and it's the inverse of `λ`. `C` is called the inverse regularization parameter
+
+In the _scikit-learn_, the parameter  ℂ  which is implemented in the Logistic Regression comes from a convention in Support Vector Machines. The term  ℂ  is directly related to the Regularization parameter  𝜆  which is the inverse of  ℂ . 
+
+```shell
+C = 1 / λ
+```
+
+Consequently, decreasing the value of the inverse regularization parameter  ℂ  means that we are increasing the regularization strength, which may be visualized by plotting the **L2-regularization** path for the two weight coefficients as below.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+from sklearn import datasets, linear_model, model_selection
+from sklearn.preprocessing import StandardScaler
+
+# load the iris flower dataset
+iris = datasets.load_iris()
+
+X = iris.data[:, [2, 3]]
+y = iris.target
+
+# split the dataset into training and test data
+X_train, X_test, y_train, y_test = model_selection.train_test_split(
+    X, y, test_size=0.3, random_state=1, stratify=y)
+
+# standardizing and scaling the features by removing the mean
+# and scaling to unit variance
+scaler = StandardScaler()
+# fit/compute the mean and std to be used for later scaling
+scaler.fit(X_train)
+# perform standardization by centering and scaling
+X_train_std = scaler.transform(X_train)
+X_test_std = scaler.transform(X_test)
+
+# combined training and test data standardized
+X_combined_std = np.vstack((X_train_std, X_test_std))
+# combined training and test data
+y_combined = np.hstack((y_train, y_test))
+
+# tracking overfitting via regularization
+# initialize the weights and params to empty values
+weights, params = [], []
+for c in np.arange(-5, 5):
+    # the value C which is regularization is a way to prevent overiftting
+    # the value of C is increased from 10exp(-5) to 10exp(5)
+    lr = linear_model.LogisticRegression(
+        solver='liblinear', C=10.0**c, random_state=1)
+    lr.fit(X_train_std, y_train)
+    weights.append(lr.coef_[1])
+    params.append(10.0**c)
+
+weights = np.array(weights)
+
+title = 'Logistic Regression for inverse-regularization parameter C '
+plt.title(title)
+plt.plot(params, weights[:, 0], label='petal length')
+plt.plot(params, weights[:, 1], label='petal width')
+plt.xlabel('Inverse regularization parameter C')
+plt.ylabel('Weight coefficient')
+plt.legend(loc='upper left')
+plt.xscale('log')
+plt.show()
+```
+
+![Tracking Overfitting](images/tracking_overfitting.png "Tracking the Overfitting through Regularization")
+
+_Note: If your SVM model is overfitting, you can try regularizing it by reducing C._
+
+scikit's documentation for LogisticRegression class is available [here](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html).
+
+
+
 
 ## References
 
