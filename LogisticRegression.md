@@ -479,7 +479,7 @@ Following are the metrics we can derive from a confusion matrix:
 
 Here is a list of all the metrics:
 
-![alt_text](images/confusionmatrics_codecogs.gif "Metrics from the Confusion Matrix')
+![alt_text](images/confusionmatrics_codecogs.gif "Metrics from the Confusion Matrix")
 
 __4. Receiver Operating Characteristic (`ROC`) Curve__
 
@@ -507,7 +507,7 @@ An `ROC` curve will roughly look as below
 [e4]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20w%5ETx
 [e5]: https://latex.codecogs.com/gif.latex?%5Cfn_jvn%20%7B%5Ccolor%7BTeal%7D%20h_w%28x%29%20%3D%20%5Cphi%28w%5ETx%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-w%5ETx%7D%7D%20%7D
 [e6]: https://latex.codecogs.com/gif.latex?z%20%3D%20%5Ctheta%5ET%7Bx%7D%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7Dw_0x_0%20&plus;%20w_1x_1%20&plus;%20w_2x_2%20&plus;%20...%20&plus;%20w_nx_n
-[e7]: https://latex.codecogs.com/gif.latex?%5Cinline%20%7B%5Ccolor%7BDarkRed%7D%20%5Cbegin%7Bmatrix%7D%20%5Cphi%28z%29%20%26%20or%20%26%20g%28z%29%20%5Cend%7Bmatrix%7D%7D%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
+[e7]: https://latex.codecogs.com/gif.latex?%5Cinline%20%5Cdpi%7B120%7D%20%5Cbg_white%20%5Clarge%20%5Cphi%28z%29%20%5C%20or%20%5C%20g%28z%29%20%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-z%7D%7D
 [e11]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20P%28y%20%3D%201%7Cx%3B%20w%29%20%3D%20h_w%28x%29
 [e12]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20P%28y%20%3D%200%7Cx%3B%20w%29%20%3D%201%20-%20h_w%28x%29
 [e13]: https://latex.codecogs.com/gif.latex?%5Cbg_white%20%5Cfn_jvn%20Pr%28X%20%3D%20x%29%20%3D%20%5Cleft%5C%7B%5Cbegin%7Bmatrix%7D%20p%20%26%20x%20%3D%201%5C%5C%201%20-%20p%20%26%20x%20%3D%200%20%5Cend%7Bmatrix%7D%5Cright%5C%5C%5C%5C%20%5Cbegin%7Bmatrix%7D%20for%20%26%20all%20%26%200%20%3C%20p%20%3C%201%20%5Cend%7Bmatrix%7D
