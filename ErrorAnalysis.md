@@ -151,7 +151,7 @@ So, essentially regularization is a mechanism to locate the optimum model comple
 
 ![optimum_model_complexity](images/optimum_model_complexity.png "Optimum Model Complexity")
 
-Below is an excerpt from the book (Deep Learning)[http://www.deeplearningbook.org/]
+Below is an excerpt from the book [Deep Learning](http://www.deeplearningbook.org/)
 
 > Regularization is any modification we make to a learning algorithm that is intended to reduce its generalization error but not its training error.
 
@@ -226,7 +226,7 @@ Using the regularization parameter **λ**, we can control how well we fit the tr
 
 In the _scikit-learn_ implementation of _LogisticRegression_, the parameter `C` is used in place of `λ` and it's the inverse of `λ`. `C` is called the inverse regularization parameter
 
-In the _scikit-learn_, the parameter  ℂ  which is implemented in the Logistic Regression comes from a convention in Support Vector Machines. The term  ℂ  is directly related to the Regularization parameter  𝜆  which is the inverse of  ℂ . 
+In the _scikit-learn_, the parameter  ℂ  which is implemented in the Logistic Regression comes from a convention in Support Vector Machines. The term  ℂ  is directly related to the Regularization parameter  𝜆  which is the inverse of  ℂ .
 
 ```shell
 C = 1 / λ
