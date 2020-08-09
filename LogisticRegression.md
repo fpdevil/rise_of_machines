@@ -2,11 +2,11 @@
 
 Logistic Regression (sometimes called as Logistic model or Logit model) is a multivariable method for analyzing the relationship between multiple independent variables and a categorical dependent variable. Here multivariate or multivariable analysis refers to the prediction of a single outcome using multiple variables.
 
-Logistic Regression belongs to the family of Generalized Linear Models (`glm`), and it's a binary classification algorithm used when the response variable is dichotomous (either 0 or 1). It is the most scalable learning algorithms.
+Logistic Regression belongs to the family of Generalized Linear Models (`glm`), and it's a binary classification algorithm used when the response variable is dichotomous (either 0 or 1). It is the most widely used and scalable learning algorithms for classification.
 
 ## Types of Data
 
-Traditionally data can be either of the below
+Depending on the use case and nature of the domain, traditionally data can be either*Qualitative*or*Quantitative.
 
 ### Qualitative vs. Quantitative
 
@@ -16,7 +16,7 @@ Traditionally data can be either of the below
 - Qualitative Data: It provides descriptive information (describing something) about qualities; information that can't actually be measured.
   Examples are: Eye Color, Gender etc.
 
-Here are examples covering some differences
+Here are some examples along with certain differences between the 2 categories:
 
 - Number of people attended to a party. (Quantitative.)
 
@@ -28,10 +28,10 @@ Here are examples covering some differences
 
 ### Discrete vs. Continuous
 
-`Quantitative data` can further be classified as `Descrete or Continuous` which are as described below:
+`Quantitative data` can further be classified as `Discrete or Continuous` which are as described below:
 
-- Discrete Data which can only take certain values (like whole numbers)
-- Continuous Data which can take any value (within a range)
+- Discrete Data is the type of data which can only take certain values (like whole numbers, prime numbers etc.,) but not the whole available range of values.
+- Continuous Data is the type of data which can take any value (within a range) like for instance the set of natural numbers.
 
 > In short, If a variable can take on any value between its minimum value and its maximum value, it is called a continuous variable; otherwise, it is called a discrete variable.
 
@@ -42,24 +42,24 @@ Statistical data are often classified according to the number of variables being
 
 - Univariate Data:
 
-When we conduct a study that looks at only one variable, we say that we are working with univariate data. Suppose, for example, that we conducted a survey to estimate the average weight of high school students. Since we are only working with one variable (weight), we would be working with univariate data.
+When we conduct a study that looks at only one variable, we say that we are working with *Univariate data*. Suppose, for example, we conducted a survey to estimate the average weight of high school students. Since we are only working with one variable (weight), we would be working with *Univariate data*.
 
 - Bivariate Data:
 
-When we conduct a study that examines the relationship between two variables, we are working with bivariate data. Suppose we conducted a study to see if there were a relationship between the height and weight of high school students. Since we are working with two variables (height and weight), we would be working with bivariate data.
+When we conduct a study that examines the relationship between two variables, we are working with *Bivariate data*. Suppose we conducted a study to see if there were a relationship between the height and weight of high school students. Since we are working with two variables (height and weight), we would be working with *Bivariate data*.
 
 
 ## Dependent and Independent Variables
 
-In world of learning, there are two entities.
+In the world of learning, there are two entities.
 - Input and
 - Output
 
 The output of the learning is based on the input, and hence `output` is coined as a dependent variable and `input` as an independent variable. Consider for example a task of predicting the `Mileage of a Car` based on the parameters like `Make of Car`, `Year of Manufacturing` and `Engine Capacity`.
 
-The input variables are typically denoted using the symbol X, with a subscript to distinguish them. So, 𝑋₁ might be the `Make of Car`, 𝑋₂ might be `Year of manifacturing` and 𝑋₃ might be `Engine Capacity`. The output variables are denoted by the symbol Y.
+The input variables are typically denoted using the symbol X, with a subscript to distinguish them. So, 𝑋₁ might be the `Make of Car`, 𝑋₂ might be `Year of manufacturing` and 𝑋₃ might be `Engine Capacity`. The output variables are denoted by the symbol Y.
 
-The input variables may also be known with other names like `predictors`, `independent variables`, `features` or sometimes as just `variables`.
+The input variables may also be known with other names like `predictors`, `independent variables`, `features` or sometimes just `variables`.
 The output variables may also be known as `response` or `dependent` variables.
 
 With the above example of Car, we can write an equation representing some kind of relation between the car mileage (𝑌) and the input parameters (𝑋𝑛) as below.
@@ -68,19 +68,20 @@ With the above example of Car, we can write an equation representing some kind o
 
 `𝑤₀` refers to the bias unit, and is an additional input value that we provide for `𝑋₀ = 1`
 
-With that, the equation becomes `Y = bias + 𝑤₁𝑋₁ + 𝑤₂𝑋₂ + 𝑤₃𝑋₃`
+With that, the equation becomes
 
-or `Y = f(X) + ϵ`       (where `ϵ` is the error term or bias)
+>`Y = *bias* + 𝑤₁𝑋₁ + 𝑤₂𝑋₂ + 𝑤₃𝑋₃`
 
-Here `bias` is the error term and
+>or `Y = f(X) + ϵ`       (where `ϵ` is the error term or bias)
+
+Here `bias` is the _error term_ and
 
 The weight coefficients 𝑤₁, 𝑤₂ and 𝑤₃... are the coefficients of independent variables, obtained as the best mathematical fit of specified model or equation.
 
 A coefficient indicates the impact of each independent variable on the outcome variable adjusting for all other independent variables. Such a model serves two purposes.
 
   1. It can predict the value of dependent variable for new values of independent variables
-  2. It can help describe the relative contribution of each independent variable to dependent variable,
-     controlling for the influences of the other independent variable.
+  2. It can help describe the relative contribution of each independent variable to dependent variable, controlling for the influences of the other independent variable.
 
 ## Logistic Regression
 
@@ -94,7 +95,7 @@ There are two models within logistic regression as listed below:
 `Binary Logistic Regression` would be typically useful when the dependent variable is dichotomous (can fall into 2 categories like Head & Tail; Pass or Fail; 0 or 1 etc.) and the independent variables are either Continuous or Categorical.
 When the dependent variable is not dichotomous and is comprised of more than 2 categories, a `Multinomial Logistic Regression` may be used.
 
-Despite the name being `Logistic Regression`, it's used in the classification category to predict the discrete output. It's mostly used as a binary class classifier and the *binary logistic model* is used to estimate the probability of a binary response and it generates the response based on one or more predictors or independent variables or features.
+Despite the name being `Logistic Regression`, it's used in the classification category to predict the discrete output. It's mostly used as a binary classifier and the *model* is used to estimate the probability of a binary response and it generates the response based on one or more predictors or independent variables or features.
 
 Logistic Regression assumes that the *dependent variable* (response variable) follows a *Binomial distribution* which can have the following characteristics
 
